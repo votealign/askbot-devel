@@ -5,7 +5,7 @@ SOURCES := setup.py askbot_requirements_dev.txt
 ENV := $(PWD)/env
 DEPENDS := $(ENV)/.depends
 INSTALLED :=$(ENV)/.installed
-CACHE := .cache
+CACHE := $(PWD)/.cache
 
 PLATFORM := $(shell python -c 'import sys; print(sys.platform)')
 
@@ -50,7 +50,7 @@ ADMIN := $(PYTHON) $(BIN)/django-admin.py
 # Installation ###############################################################
 
 .PHONY: all
-all: env
+all: assets
 
 .PHONY: env
 env: .virtualenv depends $(INSTALLED)
@@ -58,7 +58,9 @@ $(INSTALLED): $(SOURCES)
 	$(PYTHON) setup.py develop
 	rm -rf $(DEPLOY) ; mkdir $(DEPLOY)
 	# for --db-engine: 1 is PostgreSQL, 2 is SQLite, 3 is MySQL
-	echo $(DB) | $(SETUP) --dir-name=deploy --db-engine=2 --db-name=votealign --db-user=votealign --db-password=votealign
+	echo $(DB) | $(SETUP) --dir-name=$(DEPLOY) \
+	                      --db-engine=2 --db-name=votealign
+	                      --db-user=votealign --db-password=votealign
 	touch $(INSTALLED)  # flag to indicate project is installed
 
 .PHONY: .virtualenv
@@ -100,7 +102,7 @@ test: env depends
 	DJANGO_SETTINGS_MODULE=$(DEPLOY)/settings $(NOSE)
 
 .PHONY: ci
-ci: all syncdb migrate
+ci: db
 
 # Cleanup ####################################################################
 
@@ -144,6 +146,20 @@ clean-all-cache: clean-all .clean-cache
 
 # Server ####################################################################
 
+.PHONY: run
+run: env assets
+	$(MANAGE) runserver
+
+.PHONY: launch
+launch:
+	eval "sleep 10; $(OPEN) http://localhost:8000" &
+	$(MAKE) run
+
+.PHONY: assets
+assets: db messages
+
+.PHONY: db
+db: env $(DB)
 $(DB):
 	$(MAKE) syncdb migrate
 
@@ -155,17 +171,6 @@ syncdb:
 migrate:
 	$(MANAGE) migrate
 
-.PHONY: delete_db
-delete_db:
-	rm -f $(DB)
-
-.PHONY: reset_db
-reset_db: delete_db syncdb migrate
-
-.PHONY: run
-run: env $(DB) messages
-	$(MANAGE) runserver
-
 .PHONY: messages
 messages: askbot/locale/en/LC_MESSAGES/*.mo
 askbot/locale/en/LC_MESSAGES/*.mo: askbot/locale/en/LC_MESSAGES/*.po
@@ -173,8 +178,3 @@ askbot/locale/en/LC_MESSAGES/*.mo: askbot/locale/en/LC_MESSAGES/*.po
 	# cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) makemessages -l en
 	# compilemessages compiles .mo files from the .po files.
 	cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) compilemessages -l en
-
-.PHONY: launch
-launch: env $(DB)
-	eval "sleep 10; $(OPEN) http://localhost:8000" &
-	$(MANAGE) runserver
