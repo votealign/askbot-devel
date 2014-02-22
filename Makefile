@@ -161,10 +161,10 @@ delete_db:
 reset_db: delete_db syncdb migrate
 
 .PHONY: run
-run: env $(DB) syncdb
+run: env $(DB)
 	$(MANAGE) runserver
 
 .PHONY: launch
-launch: env $(DB) syncdb
+launch: env $(DB)
 	eval "sleep 10; $(OPEN) http://localhost:8000" &
 	$(MANAGE) runserver
