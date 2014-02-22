@@ -1,117 +1,122 @@
 PROJECT := VoteAlign
 PACKAGE := askbot
-SOURCES := Makefile askbot_requirements_dev.txt
+SOURCES := Makefile setup.py askbot_requirements.txt askbot_requirements_dev.txt
 
-VIRTUALENV := venv
+ENV := env
+DEPENDS := $(ENV)/.depends
+INSTALLED :=$(ENV)/.installed
 CACHE := .cache
-DEPENDS := $(VIRTUALENV)/.depends
-INSTALLED :=$(VIRTUALENV)/.installed
 
-ifeq ($(OS),Windows_NT)
-VERSION := C:\\Python27\\python.exe
-BIN := $(VIRTUALENV)/Scripts
-LIB := $(VIRTUALENV)/Lib/python2.7
-EXE := .exe
-OPEN := cmd /c start
+PLATFORM := $(shell python -c 'import sys; print(sys.platform)')
+
+ifneq ($(findstring win32, $(PLATFORM)), )
+	SYS_PYTHON := C:\\Python27\\python.exe
+	SYS_VIRTUALENV := C:\\Python27\\Scripts\\virtualenv.exe
+	BIN := $(ENV)/Scripts
+	EXE := .exe
+	OPEN := cmd /c start
+	# https://bugs.launchpad.net/virtualenv/+bug/449537
+	export TCL_LIBRARY=C:\\Python27\\tcl\\tcl8.5
 else
-VERSION := python2.7
-BIN := $(VIRTUALENV)/bin
-LIB := $(VIRTUALENV)/lib/python2.7
-	ifeq ($(shell uname),Linux)
-	OPEN := xdg-open
+	SYS_PYTHON := python2
+	SYS_VIRTUALENV := virtualenv
+	BIN := $(ENV)/bin
+	ifneq ($(findstring cygwin, $(PLATFORM)), )
+		OPEN := cygstart
 	else
-	OPEN := open
+		OPEN := open
 	endif
 endif
+
 MAN := man
 SHARE := share
 
 PYTHON := $(BIN)/python$(EXE)
 PIP := $(BIN)/pip$(EXE)
+RST2HTML := $(BIN)/rst2html.py
+PDOC := $(BIN)/pdoc
 PEP8 := $(BIN)/pep8$(EXE)
+PEP257 := $(BIN)/pep257$(EXE)
 PYLINT := $(BIN)/pylint$(EXE)
 NOSE := $(BIN)/nosetests$(EXE)
 
 # Installation ###############################################################
 
 .PHONY: all
-all: develop
+all: env
 
-.PHONY: develop
-develop: .env $(INSTALLED)
-$(INSTALLED):
-	$(PIP) install -r askbot_requirements_dev.txt --download-cache=$(CACHE)
+.PHONY: env
+env: .virtualenv $(INSTALLED)
+$(INSTALLED): $(SOURCES)
+	$(PIP) install -r askbot_requirements.txt --download-cache=$(CACHE)
 	touch $(INSTALLED)  # flag to indicate project is installed
 
-.PHONY: .env
-.env: $(PYTHON)
-$(PYTHON):
-	virtualenv --python $(VERSION) $(VIRTUALENV)
+.PHONY: .virtualenv
+.virtualenv: $(PIP)
+$(PIP):
+	$(SYS_VIRTUALENV) --python $(SYS_PYTHON) $(ENV)
 
 .PHONY: depends
-depends: .env $(DEPENDS) $(SOURCES)
-$(DEPENDS):
-	$(PIP) install pep8 nose coverage --download-cache=$(CACHE)
-	$(MAKE) .pylint
+depends: .virtualenv $(DEPENDS) $(SOURCES)
+$(DEPENDS): $(SOURCES)
+	$(PIP) install -r askbot_requirements_dev.txt pep8 pep257 --download-cache=$(CACHE)
 	touch $(DEPENDS)  # flag to indicate dependencies are installed
-
-# issue: pylint is not currently installing on Windows from PyPI
-# tracker: https://bitbucket.org/logilab/pylint/issue/51
-# workaround: install from the source repositories on Windows/Cygwin
-.PHONY: .pylint
-ifeq ($(shell uname),$(filter $(shell uname),Windows CYGWIN_NT-6.1 CYGWIN_NT-6.1-WOW64))
-.pylint: .env
-	$(PIP) install https://bitbucket.org/moben/logilab-common/get/cb9cb5b8fff228b9a4244e4a6d9b2464a7b6148f.zip --download-cache=$(CACHE)
-	$(PIP) install https://bitbucket.org/logilab/pylint/get/8200a32b14597c24f0f4706417bf30aec1e25386.zip --download-cache=$(CACHE)
-else
-.pylint: .env
-	$(PIP) install pylint --download-cache=$(CACHE)
-endif
-
 
 # Static Analysis ############################################################
 
 .PHONY: pep8
-pep8: depends
+pep8: env depends
 	$(PEP8) $(PACKAGE) --ignore=E501
 
+.PHONY: pep257
+pep257: env depends
+	$(PEP257) $(PACKAGE) --ignore=E501
+
 .PHONY: pylint
-pylint: depends
+pylint: env depends
 	$(PYLINT) $(PACKAGE) --reports no \
-	                     --msg-template="{msg_id}: {msg}: {obj} line:{line}" \
-	                     --max-line-length=99 \
-	                     --disable=I0011,W0142,W0511,R,C
+	                     --msg-template="{msg_id}:{line:3d},{column}:{msg}" \
+	                     --max-line-length=79 \
+	                     --disable=I0011,W0142,W0511,R0801
 
 .PHONY: check
-check: depends
-	$(MAKE) pep8
-	$(MAKE) pylint
+check: pep8 pep257 pylint
 
 # Testing ####################################################################
 
 .PHONY: test
-test: develop depends
-	DJANGO_SETTINGS_MODULE=thrive_refugee.settings $(NOSE)
+test: env depends
+	DJANGO_SETTINGS_MODULE=$(PACKAGE).settings $(NOSE)
 
 # Cleanup ####################################################################
 
+.PHONY: clean
+clean: .clean-dist .clean-test .clean-doc .clean-build
+
+.PHONY: clean-all
+clean-all: clean .clean-env
+
 .PHONY: .clean-env
 .clean-env:
-	rm -rf $(VIRTUALENV)
+	rm -rf $(ENV)
+
+.PHONY: .clean-build
+.clean-build:
+	find $(PACKAGE) -name '*.pyc' -delete
+	find $(PACKAGE) -name '__pycache__' -delete
+	rm -rf *.egg-info
+
+.PHONY: .clean-doc
+.clean-doc:
+	rm -rf apidocs docs/README*.html
+
+.PHONY: .clean-test
+.clean-test:
+	rm -rf .coverage
 
 .PHONY: .clean-dist
 .clean-dist:
-	rm -rf dist build *.egg-info
-
-.PHONY: clean
-clean: .clean-env .clean-dist delete_db
-	rm -rf */*.pyc */*/*.pyc */*/*/*.pyc */*/*/*/*.pyc
-	rm -rf */__pycache__ */*/__pycache__ */*/*/__pycache__ */*/*/*/__pycache__
-	rm -rf apidocs docs/README.html .coverage
-
-.PHONY: clean-all
-clean-all: clean
-	rm -rf $(CACHE)
+	rm -rf dist build
 
 # Server ####################################################################
 
