@@ -111,7 +111,7 @@ clean-all: clean .clean-env
 	rm -rf $(DEPLOY)
 
 .PHONY: clean-all-cache
-clean-all-ache: clean-all .clean-cache
+clean-all-cache: clean-all .clean-cache
 
 .PHONY: .clean-env
 .clean-env:
@@ -161,10 +161,10 @@ delete_db:
 reset_db: delete_db syncdb migrate
 
 .PHONY: run
-run: env $(DB) syncdb
+run: env $(DB)
 	$(MANAGE) runserver
 
 .PHONY: launch
-launch: env $(DB) syncdb
+launch: env $(DB)
 	eval "sleep 10; $(OPEN) http://localhost:8000" &
 	$(MANAGE) runserver
