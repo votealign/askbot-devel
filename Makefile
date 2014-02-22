@@ -97,6 +97,9 @@ check: pep8 pep257 pylint
 test: env depends
 	DJANGO_SETTINGS_MODULE=$(DEPLOY)/settings $(NOSE)
 
+.PHONY: ci
+ci: all syncdb migrate
+
 # Cleanup ####################################################################
 
 .PHONY: clean
@@ -139,8 +142,6 @@ clean-all-ache: clean-all .clean-cache
 
 # Server ####################################################################
 
-.PHONY: db
-db: $(DB)
 $(DB):
 	$(MAKE) syncdb migrate
 
