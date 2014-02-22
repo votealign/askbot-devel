@@ -1,6 +1,6 @@
-PROJECT := thrive-refugee
-PACKAGE := esl_manager refugee_manager thrive_refugee swingtime
-SOURCES := Makefile requirements.txt
+PROJECT := VoteAlign
+PACKAGE := askbot
+SOURCES := Makefile askbot_requirements_dev.txt
 
 VIRTUALENV := venv
 CACHE := .cache
@@ -40,7 +40,7 @@ all: develop
 .PHONY: develop
 develop: .env $(INSTALLED)
 $(INSTALLED):
-	$(PIP) install -r requirements.txt  --download-cache=$(CACHE)
+	$(PIP) install -r askbot_requirements_dev.txt --download-cache=$(CACHE)
 	touch $(INSTALLED)  # flag to indicate project is installed
 
 .PHONY: .env
