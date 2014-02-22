@@ -139,6 +139,8 @@ clean-all-ache: clean-all .clean-cache
 
 # Server ####################################################################
 
+.PHONY: db
+db: $(DB)
 $(DB):
 	$(MAKE) syncdb migrate
 
