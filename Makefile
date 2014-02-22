@@ -101,9 +101,11 @@ test: env depends
 
 .PHONY: clean
 clean: .clean-dist .clean-test .clean-doc .clean-build
+	rm -rf $(DB)
 
 .PHONY: clean-all
 clean-all: clean .clean-env
+	rm -rf $(DEPLOY)
 
 .PHONY: clean-all-cache
 clean-all-ache: clean-all .clean-cache
@@ -120,6 +122,7 @@ clean-all-ache: clean-all .clean-cache
 .clean-build:
 	find $(PACKAGE) -name '*.pyc' -delete
 	find $(PACKAGE) -name '__pycache__' -delete
+	rm -rf *.pyc
 	rm -rf *.egg-info
 
 .PHONY: .clean-doc
