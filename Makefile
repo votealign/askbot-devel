@@ -111,7 +111,7 @@ clean-all: clean .clean-env
 	rm -rf $(DEPLOY)
 
 .PHONY: clean-all-cache
-clean-all-ache: clean-all .clean-cache
+clean-all-cache: clean-all .clean-cache
 
 .PHONY: .clean-env
 .clean-env:
