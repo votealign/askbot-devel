@@ -2,7 +2,7 @@ PROJECT := VoteAlign
 PACKAGE := askbot
 SOURCES := setup.py askbot_requirements_dev.txt
 
-ENV := env
+ENV := $(PWD)/env
 DEPENDS := $(ENV)/.depends
 INSTALLED :=$(ENV)/.installed
 CACHE := .cache
@@ -26,6 +26,7 @@ else
 	else
 		OPEN := open
 	endif
+	BREW_GETTEXT_BIN := $(shell brew --prefix gettext)/bin
 endif
 
 MAN := man
@@ -44,6 +45,7 @@ DEPLOY := deploy
 SETUP := $(BIN)/askbot-setup$(EXE)
 DB := $(DEPLOY)/db.sqlite3
 MANAGE := $(PYTHON) $(DEPLOY)/manage.py
+ADMIN := $(PYTHON) $(BIN)/django-admin.py
 
 # Installation ###############################################################
 
@@ -161,8 +163,16 @@ delete_db:
 reset_db: delete_db syncdb migrate
 
 .PHONY: run
-run: env $(DB)
+run: env $(DB) messages
 	$(MANAGE) runserver
+
+.PHONY: messages
+messages: askbot/locale/en/LC_MESSAGES/*.mo
+askbot/locale/en/LC_MESSAGES/*.mo: askbot/locale/en/LC_MESSAGES/*.po
+	# makemessages compiles .po files from the source code.
+	# cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) makemessages -l en
+	# compilemessages compiles .mo files from the .po files.
+	cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) compilemessages -l en
 
 .PHONY: launch
 launch: env $(DB)
