@@ -42,7 +42,7 @@ NOSE := $(BIN)/nosetests$(EXE)
 
 DEPLOY := deploy
 SETUP := $(BIN)/askbot-setup$(EXE)
-DB := db.sqlite3
+DB := $(DEPLOY)/db.sqlite3
 MANAGE := $(PYTHON) $(DEPLOY)/manage.py
 
 # Installation ###############################################################
