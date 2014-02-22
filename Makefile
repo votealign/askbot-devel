@@ -1,6 +1,6 @@
 PROJECT := VoteAlign
 PACKAGE := askbot
-SOURCES := Makefile setup.py askbot_requirements.txt askbot_requirements_dev.txt
+SOURCES := setup.py askbot_requirements_dev.txt
 
 ENV := env
 DEPENDS := $(ENV)/.depends
@@ -40,15 +40,23 @@ PEP257 := $(BIN)/pep257$(EXE)
 PYLINT := $(BIN)/pylint$(EXE)
 NOSE := $(BIN)/nosetests$(EXE)
 
+DEPLOY := deploy
+SETUP := $(BIN)/askbot-setup$(EXE)
+DB := db.sqlite3
+MANAGE := $(PYTHON) $(DEPLOY)/manage.py
+
 # Installation ###############################################################
 
 .PHONY: all
 all: env
 
 .PHONY: env
-env: .virtualenv $(INSTALLED)
+env: .virtualenv depends $(INSTALLED)
 $(INSTALLED): $(SOURCES)
-	$(PIP) install -r askbot_requirements.txt --download-cache=$(CACHE)
+	$(PYTHON) setup.py develop
+	rm -rf $(DEPLOY) ; mkdir $(DEPLOY)
+	# for --db-engine: 1 is PostgreSQL, 2 is SQLite, 3 is MySQL
+	echo $(DB) | $(SETUP) --dir-name=deploy --db-engine=2 --db-name=votealign --db-user=votealign --db-password=votealign
 	touch $(INSTALLED)  # flag to indicate project is installed
 
 .PHONY: .virtualenv
@@ -57,9 +65,10 @@ $(PIP):
 	$(SYS_VIRTUALENV) --python $(SYS_PYTHON) $(ENV)
 
 .PHONY: depends
-depends: .virtualenv $(DEPENDS) $(SOURCES)
-$(DEPENDS): $(SOURCES)
-	$(PIP) install -r askbot_requirements_dev.txt pep8 pep257 --download-cache=$(CACHE)
+depends: $(DEPENDS) $(SOURCES)
+$(DEPENDS):
+	$(PIP) install -r askbot_requirements_dev.txt --download-cache=$(CACHE)
+	$(PIP) install pep8 pep257 --download-cache=$(CACHE)
 	touch $(DEPENDS)  # flag to indicate dependencies are installed
 
 # Static Analysis ############################################################
@@ -86,7 +95,7 @@ check: pep8 pep257 pylint
 
 .PHONY: test
 test: env depends
-	DJANGO_SETTINGS_MODULE=$(PACKAGE).settings $(NOSE)
+	DJANGO_SETTINGS_MODULE=$(DEPLOY)/settings $(NOSE)
 
 # Cleanup ####################################################################
 
@@ -96,9 +105,16 @@ clean: .clean-dist .clean-test .clean-doc .clean-build
 .PHONY: clean-all
 clean-all: clean .clean-env
 
+.PHONY: clean-all-cache
+clean-all-ache: clean-all .clean-cache
+
 .PHONY: .clean-env
 .clean-env:
 	rm -rf $(ENV)
+
+.PHONY: .clean-cache
+.clean-cache:
+	rm -rf $(CACHE)
 
 .PHONY: .clean-build
 .clean-build:
@@ -120,70 +136,29 @@ clean-all: clean .clean-env
 
 # Server ####################################################################
 
-MANAGE := $(PYTHON) manage.py
-DB := thrive.db
-
 $(DB):
-	$(MAKE) syncdb load_data
+	$(MAKE) syncdb migrate
 
 .PHONY: syncdb
 syncdb:
-	cp thrive_refugee/local_settings.default thrive_refugee/local_settings.py
 	$(MANAGE) syncdb --noinput
 
-.PHONY: load_data
-load_data:
-	$(MANAGE) loaddata thrive_refugee/fixtures/auth.json
-	$(MANAGE) loaddata esl_manager/fixtures/eslstudent.json
-	$(MANAGE) loaddata esl_manager/fixtures/attended.json
-	$(MANAGE) loaddata esl_manager/fixtures/assesment.json
-	$(MANAGE) loaddata refugee_manager/fixtures/volunteer.json
-	$(MANAGE) loaddata refugee_manager/fixtures/case.json
-	$(MANAGE) loaddata refugee_manager/fixtures/individual.json
-	$(MANAGE) loaddata refugee_manager/fixtures/casedetail.json
-	$(MANAGE) loaddata refugee_manager/fixtures/activitynote.json
-	$(MANAGE) loaddata refugee_manager/fixtures/assessment.json
-	$(MANAGE) loaddata swingtime/fixtures/eventtype.json
-	$(MANAGE) loaddata swingtime/fixtures/event.json
-	$(MANAGE) loaddata employment_manager/fixtures/employmentclient.json
-	$(MANAGE) loaddata employment_manager/fixtures/job.json
-	$(MANAGE) loaddata employment_manager/fixtures/skill.json
-	$(MANAGE) loaddata employment_manager/fixtures/assesment.json
-	$(MANAGE) loaddata employment_manager/fixtures/language.json
-
-.PHONY: dump_data
-dump_data:
-	$(MANAGE) dumpdata auth > thrive_refugee/fixtures/auth.json
-	$(MANAGE) dumpdata esl_manager.ESLStudent > esl_manager/fixtures/eslstudent.json
-	$(MANAGE) dumpdata esl_manager.Attended > esl_manager/fixtures/attended.json
-	$(MANAGE) dumpdata esl_manager.Assesment > esl_manager/fixtures/assesment.json
-	$(MANAGE) dumpdata refugee_manager.Volunteer > refugee_manager/fixtures/volunteer.json
-	$(MANAGE) dumpdata refugee_manager.Case > refugee_manager/fixtures/case.json
-	$(MANAGE) dumpdata refugee_manager.Individual > refugee_manager/fixtures/individual.json
-	$(MANAGE) dumpdata refugee_manager.CaseDetail > refugee_manager/fixtures/casedetail.json
-	$(MANAGE) dumpdata refugee_manager.ActivityNote > refugee_manager/fixtures/activitynote.json
-	$(MANAGE) dumpdata refugee_manager.Assessment > refugee_manager/fixtures/assessment.json
-	$(MANAGE) dumpdata swingtime.EventType > swingtime/fixtures/eventtype.json
-	$(MANAGE) dumpdata swingtime.Event > swingtime/fixtures/event.json
-	$(MANAGE) dumpdata employment_manager.EmploymentClient > employment_manager/fixtures/employmentclient.json
-	$(MANAGE) dumpdata employment_manager.Job > employment_manager/fixtures/job.json
-	$(MANAGE) dumpdata employment_manager.Skill > employment_manager/fixtures/skill.json
-	$(MANAGE) dumpdata employment_manager.Assesment > employment_manager/fixtures/assesment.json
-	$(MANAGE) dumpdata employment_manager.Language > employment_manager/fixtures/language.json
+.PHONY: migrate
+migrate:
+	$(MANAGE) migrate
 
 .PHONY: delete_db
 delete_db:
 	rm -f $(DB)
-	rm -f thrive_refugee/local_settings.py
 
 .PHONY: reset_db
-reset_db: delete_db syncdb load_data
+reset_db: delete_db syncdb migrate
 
 .PHONY: run
-run: develop $(DB) syncdb
+run: env $(DB) syncdb
 	$(MANAGE) runserver
 
 .PHONY: launch
-launch: develop $(DB) syncdb
-	eval "sleep 1; $(OPEN) http://localhost:8000" &
+launch: env $(DB) syncdb
+	eval "sleep 10; $(OPEN) http://localhost:8000" &
 	$(MANAGE) runserver

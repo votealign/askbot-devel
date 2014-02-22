@@ -54,5 +54,8 @@ recaptcha
 *.DS_Store
 htmlcov
 
+env
 .cache
-venv
+deploy
+*.sqlite3
+
