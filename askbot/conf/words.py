@@ -223,7 +223,7 @@ settings.register(
     values.LongStringValue(
         WORDS,
         'WORDS_QUESTIONS_COUNTABLE_FORMS',
-        default='decision\decisions',
+        default='decision\ndecisions',
         description=_('Countable plural forms for "decision"'),
         help_text=_('Enter one form per line, pay attention')
     )
@@ -233,7 +233,7 @@ settings.register(
     values.LongStringValue(
         WORDS,
         'WORDS_ANSWERS_COUNTABLE_FORMS',
-        default='summary\summaries',
+        default='summary\nsummaries',
         description=_('Countable plural forms for "summary"'),
         help_text=_('Enter one form per line, pay attention')
     )
