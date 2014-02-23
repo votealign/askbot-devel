@@ -146,14 +146,14 @@ clean-all-cache: clean-all .clean-cache
 
 # Server ####################################################################
 
-.PHONY: run
-run: env assets
+.PHONY: runserver
+runserver: env assets
 	$(MANAGE) runserver
 
 .PHONY: launch
 launch:
 	eval "sleep 10; $(OPEN) http://localhost:8000" &
-	$(MAKE) run
+	$(MAKE) runserver
 
 .PHONY: assets
 assets: db messages
@@ -161,7 +161,7 @@ assets: db messages
 .PHONY: db
 db: env $(DB)
 $(DB):
-	$(MAKE) syncdb migrate
+	$(MAKE) syncdb migrate collectstatic
 
 .PHONY: syncdb
 syncdb:
@@ -170,6 +170,10 @@ syncdb:
 .PHONY: migrate
 migrate:
 	$(MANAGE) migrate
+
+.PHONY: collectstatic
+collectstatic:
+	$(MANAGE) collectstatic --noinput
 
 .PHONY: messages
 messages: askbot/locale/en/LC_MESSAGES/*.mo
