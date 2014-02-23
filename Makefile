@@ -50,7 +50,7 @@ ADMIN := $(PYTHON) $(BIN)/django-admin.py
 # Installation ###############################################################
 
 .PHONY: all
-all: assets
+all: env assets
 
 .PHONY: env
 env: .virtualenv depends $(INSTALLED)

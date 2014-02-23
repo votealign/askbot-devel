@@ -124,7 +124,7 @@ msgstr ""
 #: forms.py:406 forms.py:1006 models/widgets.py:27
 #: templates/widgets/edit_post.html:32 templates/widgets/meta_nav.html:6
 msgid "tags"
-msgstr ""
+msgstr "issues"
 
 #: forms.py:408
 #, python-format
@@ -7452,7 +7452,7 @@ msgstr ""
 
 #: templates/widgets/meta_nav.html:21
 msgid "users"
-msgstr "people"
+msgstr "citizens"
 
 #: templates/widgets/meta_nav.html:28
 msgid "badges"
