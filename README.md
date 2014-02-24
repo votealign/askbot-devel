@@ -51,8 +51,8 @@ Updating Strings
 
 As far as we can tell, all displayed English text is located in:
 
-* askbot/locale/en/LC_MESSAGES/*.po
-* askbot/config/words.py
+* [askbot/locale/en/LC_MESSAGES/*.po](askbot/locale/en/LC_MESSAGES/)
+* [askbot/conf/words.py](askbot/conf/words.py)
 
 The compiled translations (*.mo) are created from *.po files using `gettext`.
 Default (English) phrases are located in words.py. Compile new messages before starting the server:
