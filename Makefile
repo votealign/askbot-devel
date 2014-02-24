@@ -2,10 +2,10 @@ PROJECT := VoteAlign
 PACKAGE := askbot
 SOURCES := setup.py askbot_requirements_dev.txt
 
-ENV := $(PWD)/env
+ENV := env
 DEPENDS := $(ENV)/.depends
 INSTALLED :=$(ENV)/.installed
-CACHE := $(PWD)/.cache
+CACHE := .cache
 
 PLATFORM := $(shell python -c 'import sys; print(sys.platform)')
 
@@ -44,8 +44,8 @@ NOSE := $(BIN)/nosetests$(EXE)
 DEPLOY := deploy
 SETUP := $(BIN)/askbot-setup$(EXE)
 DB := $(DEPLOY)/db.sqlite3
-MANAGE := $(PYTHON) $(DEPLOY)/manage.py
-ADMIN := $(PYTHON) $(BIN)/django-admin.py
+MANAGE := $(PYTHON) $(PWD)/$(DEPLOY)/manage.py
+ADMIN := $(PYTHON) $(PWD)/$(BIN)/django-admin.py
 
 # Installation ###############################################################
 
