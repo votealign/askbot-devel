@@ -26,6 +26,9 @@ else
 	else
 		OPEN := open
 	endif
+endif
+
+ifeq ("darwin", "$(PLATFORM)")
 	BREW_GETTEXT_BIN := $(shell brew --prefix gettext)/bin
 endif
 
@@ -59,7 +62,7 @@ $(INSTALLED): $(SOURCES)
 	rm -rf $(DEPLOY) ; mkdir $(DEPLOY)
 	# for --db-engine: 1 is PostgreSQL, 2 is SQLite, 3 is MySQL
 	echo $(DB) | $(SETUP) --dir-name=$(DEPLOY) \
-	                      --db-engine=2 --db-name=votealign
+	                      --db-engine=2 --db-name=votealign \
 	                      --db-user=votealign --db-password=votealign
 	touch $(INSTALLED)  # flag to indicate project is installed
 
