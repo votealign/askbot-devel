@@ -153,7 +153,7 @@ serve: env assets
 .PHONY: launch
 launch:
 	eval "sleep 10; $(OPEN) http://localhost:8000" &
-	$(MAKE) runserver
+	$(MAKE) serve
 
 .PHONY: assets
 assets: db messages
