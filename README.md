@@ -30,7 +30,7 @@ Requirements
 Installation
 ------------
 
-Clone and enter this repository
+Clone and enter this repository:
 
     git clone https://votealign/votealign.git
     cd votealign
