@@ -14,7 +14,7 @@ For Contributors
 Requirements
 ------------
 
-* Python 3.3: http://www.python.org/download/releases/3.3.4/#download
+* Python 2.7: http://www.python.org/getit/releases/2.7.6/#download
 * virtualenv: https://pypi.python.org/pypi/virtualenv#installation
 * GNU Make:
     * Windows: http://cygwin.com/install.html
