@@ -45,11 +45,11 @@ Build the database and messages:
 
 Start the server:
 
-    make serve
+    make serve  # stop with Control+C
 
 Start the server and launch the site in your browser:
 
-    make launch
+    make launch  # stop with Control+C
 
 
 Updating Strings
