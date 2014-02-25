@@ -148,7 +148,7 @@ clean-all-cache: clean-all .clean-cache
 
 .PHONY: serve
 serve: env assets
-	$(MANAGE) runserver
+	$(MANAGE) runserver [::]:8000
 
 .PHONY: launch
 launch:
