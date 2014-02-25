@@ -14,6 +14,7 @@ For Contributors
 Requirements
 ------------
 
+* Git: http://git-scm.com/
 * Python 2.7: http://www.python.org/getit/releases/2.7.6/#download
 * virtualenv: https://pypi.python.org/pypi/virtualenv#installation
 * GNU Make:
@@ -28,6 +29,11 @@ Requirements
 
 Installation
 ------------
+
+Clone and enter this repository:
+
+    git clone https://votealign/votealign.git
+    cd votealign
 
 Create a virtualenv and local deployment:
 
