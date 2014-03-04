@@ -23,7 +23,7 @@ Requirements
     * Linux: http://www.gnu.org/software/make (likely already installed)
 * GNU gettext:
     * Windows: ???
-    * Mac: `brew install gettext` (http://brew.sh)
+    * Mac: `brew install gettext` (keg only, http://brew.sh)
     * Linux: ???
 
 
