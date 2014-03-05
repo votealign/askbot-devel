@@ -24,7 +24,7 @@ Requirements
 * GNU gettext:
     * Windows: ???
     * Mac: `brew install gettext` (keg only, http://brew.sh)
-    * Linux: ???
+    * Linux: Install gettext from your distro's standard repository 
 
 
 Installation
