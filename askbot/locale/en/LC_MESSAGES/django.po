@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 0.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-16 16:34-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2014-03-18 17:59-0400\n"
 "Last-Translator: Evgeny Fadeev <evgeny.fadeev@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -162,7 +162,7 @@ msgstr ""
 
 #: forms.py:478 conf/words.py:90
 msgid "question"
-msgstr ""
+msgstr "bill"
 
 #: forms.py:492
 msgid "update summary:"
@@ -378,8 +378,9 @@ msgstr ""
 
 #: forms.py:1522
 msgid "Asked by me"
-msgstr ""
+msgstr "Added by me"
 
+# Summarized by me
 #: forms.py:1525
 msgid "Answered by me"
 msgstr ""
@@ -417,6 +418,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+# Issues
 #: forms.py:1695 templates/tags.html:3 templates/tags/header.html:9
 #: templates/tags/list_bulk_tag_subscription.html:12
 #: templates/widgets/edit_post.html:26 templates/widgets/related_tags.html:3
@@ -424,6 +426,7 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
+# An edit for my summary
 #: tasks.py:98
 msgid "An edit for my answer"
 msgstr ""
@@ -439,19 +442,19 @@ msgstr ""
 
 #: urls.py:44 conf/words.py:99
 msgid "questions"
-msgstr ""
+msgstr "bills"
 
 #: urls.py:57
 msgid "question/"
-msgstr ""
+msgstr "bill"
 
 #: urls.py:62
 msgid "tags/"
-msgstr ""
+msgstr "issues/"
 
 #: urls.py:67 urls.py:72 urls.py:79 urls.py:85 urls.py:94 urls.py:101
 msgid "users/"
-msgstr ""
+msgstr "citizens/"
 
 #: urls.py:72
 msgid "by-group/"
@@ -475,7 +478,7 @@ msgstr ""
 
 #: urls.py:111
 msgid "users/update_has_custom_avatar/"
-msgstr ""
+msgstr "citizens/update_has_custom_avatar/"
 
 #: urls.py:116 urls.py:121
 msgid "badges/"
@@ -503,7 +506,7 @@ msgstr ""
 
 #: urls.py:160 urls.py:165
 msgid "answers/"
-msgstr ""
+msgstr "summaries/"
 
 #: urls.py:165 urls.py:267
 msgid "revisions/"
@@ -512,11 +515,11 @@ msgstr ""
 #: urls.py:232 urls.py:237 urls.py:242 urls.py:247 urls.py:252 urls.py:257
 #: urls.py:267
 msgid "questions/"
-msgstr ""
+msgstr "bills/"
 
 #: urls.py:232 urls.py:506 urls.py:511 urls.py:516 urls.py:521
 msgid "ask/"
-msgstr ""
+msgstr "add/"
 
 #: urls.py:242
 msgid "retag/"
@@ -532,27 +535,27 @@ msgstr ""
 
 #: urls.py:257
 msgid "answer/"
-msgstr ""
+msgstr "summary/"
 
 #: urls.py:325
 msgid "tags/subscriptions/"
-msgstr ""
+msgstr "issues/subscriptions/"
 
 #: urls.py:330
 msgid "tags/subscriptions/delete/"
-msgstr ""
+msgstr "issues/subscriptions/delete/"
 
 #: urls.py:335
 msgid "tags/subscriptions/create/"
-msgstr ""
+msgstr "issues/subscriptions/create/"
 
 #: urls.py:340
 msgid "tags/subscriptions/edit/"
-msgstr ""
+msgstr "issues/subscriptions/edit/"
 
 #: urls.py:345
 msgid "suggested-tags/"
-msgstr ""
+msgstr "suggested-issues/"
 
 #: urls.py:470
 msgid "messages/"
@@ -2531,7 +2534,7 @@ msgstr ""
 
 #: conf/words.py:22 conf/words.py:23 templates/ask.html:4
 msgid "Ask Your Question"
-msgstr ""
+msgstr "Add A Bill"
 
 #: conf/words.py:24 conf/words.py:34 conf/words.py:44 conf/words.py:54
 #: conf/words.py:64
@@ -2544,196 +2547,196 @@ msgstr ""
 
 #: conf/words.py:42 conf/words.py:43
 msgid "Post Your Answer"
-msgstr ""
+msgstr "Submit A Summary"
 
 #: conf/words.py:52 conf/words.py:53
 msgid "Answer Your Own Question"
-msgstr ""
+msgstr "Summarize This Bill"
 
 #: conf/words.py:62 conf/words.py:63
 msgid "Edit Your Previous Answer"
-msgstr ""
+msgstr "Edit Your Previous Summary"
 
 #: conf/words.py:72 conf/words.py:73
 msgid "asked"
-msgstr ""
+msgstr "added"
 
 #: conf/words.py:81 conf/words.py:82
 msgid "answered"
-msgstr ""
+msgstr "summarized"
 
 #: conf/words.py:91
 msgid "question (noun, singular)"
-msgstr ""
+msgstr "bill"
 
 #: conf/words.py:100
 msgid "questions (noun, plural)"
-msgstr ""
+msgstr "bills"
 
 #: conf/words.py:108 templates/widgets/question_summary.html:30
 msgid "answer"
-msgstr ""
+msgstr "summarize"
 
 #: conf/words.py:109
 msgid "answer (noun, sungular)"
-msgstr ""
+msgstr "summary"
 
 #: conf/words.py:117 conf/words.py:118
 msgid "Show only questions from"
-msgstr ""
+msgstr "Show only summaries from"
 
 #: conf/words.py:126 conf/words.py:127
 msgid "Please ask your question here"
-msgstr ""
+msgstr "Please add a bill here"
 
 #: conf/words.py:135 conf/words.py:136
 msgid "Please enter your question"
-msgstr ""
+msgstr "Please enter a bill"
 
 #: conf/words.py:144 conf/words.py:145
 msgid "ask a question interesting to this community"
-msgstr ""
+msgstr "add a bill interesting to this community"
 
 #: conf/words.py:153 conf/words.py:154
 msgid "No questions here."
-msgstr ""
+msgstr "No bills here."
 
 #: conf/words.py:162 conf/words.py:163
 msgid "Please follow some questions or follow some users."
-msgstr ""
+msgstr "Please follow some bills or follow some citizens."
 
 #: conf/words.py:171 conf/words.py:172
 msgid "Please feel free to ask your question!"
-msgstr ""
+msgstr "Please feel free to add a bill!"
 
 #: conf/words.py:180 conf/words.py:181
 msgid "swap with question"
-msgstr ""
+msgstr "swap with bill"
 
 #: conf/words.py:189 conf/words.py:190
 msgid "repost as a question comment"
-msgstr ""
+msgstr "repost as a bill comment"
 
 #: conf/words.py:198 conf/words.py:199
 msgid "repost as a comment under older answer"
-msgstr ""
+msgstr "repost as a comment under older summary"
 
 #: conf/words.py:207 conf/words.py:208
 msgid "invite other to help answer this question"
-msgstr ""
+msgstr "invite other to help summarize this bill"
 
 #: conf/words.py:216 conf/words.py:217
 msgid "Related questions"
-msgstr ""
+msgstr "Related bills"
 
 #: conf/words.py:225 conf/words.py:226
 msgid "Question Tools"
-msgstr ""
+msgstr "Bill Tools"
 
 #: conf/words.py:234 conf/words.py:235
 msgid "Phrase: this question is currently shared only with:"
-msgstr ""
+msgstr "Phrase: this bill is currently shared only with:"
 
 #: conf/words.py:243 conf/words.py:244
 msgid "Be the first one to answer this question!"
-msgstr ""
+msgstr "Be the first one to summarize this bill!"
 
 #: conf/words.py:252 conf/words.py:253
 msgid "followed questions"
-msgstr ""
+msgstr "followed bills"
 
 #: conf/words.py:262
 msgid "Phrase: comments and answers to others questions"
-msgstr ""
+msgstr "Phrase: comments and summaries to others bills"
 
 #: conf/words.py:270 conf/words.py:271
 msgid "You can post questions by emailing them at"
-msgstr ""
+msgstr "You can add bills by emailing them at"
 
 #: conf/words.py:279 conf/words.py:280
 msgid "List of questions"
-msgstr ""
+msgstr "List of bills"
 
 #: conf/words.py:288 conf/words.py:289
 msgid "Community gives you awards for your questions, answers and votes"
-msgstr ""
+msgstr "Community gives you awards for your bills, summaries and votes"
 
 #: conf/words.py:297 conf/words.py:298
 msgid "Close question"
-msgstr ""
+msgstr "Close bill"
 
 #: conf/words.py:306 conf/words.py:307
 msgid "Edit question"
-msgstr ""
+msgstr "Edit bill"
 
 #: conf/words.py:315 conf/words.py:316
 msgid "Question - in one sentence"
-msgstr ""
+msgstr "Bill - in one sentence"
 
 #: conf/words.py:324 conf/words.py:325
 msgid "Retag question"
-msgstr ""
+msgstr "Retag bill"
 
 #: conf/words.py:333 conf/words.py:334
 msgid "Reopen question"
-msgstr ""
+msgstr "Reopen bill"
 
 #: conf/words.py:342 conf/words.py:343
 msgid "There are no unanswered questions here"
-msgstr ""
+msgstr "There are no unsummarized bills here"
 
 #: conf/words.py:351 conf/words.py:352
 #: templates/user_profile/user_answers_list.html:5
 msgid "this answer has been selected as correct"
-msgstr ""
+msgstr "this summary has been selected as correct"
 
 #: conf/words.py:360 conf/words.py:361
 msgid "mark this answer as correct"
-msgstr ""
+msgstr "mark this summary as correct"
 
 #: conf/words.py:369 conf/words.py:370
 msgid "Login/Signup to Answer"
-msgstr ""
+msgstr "Login/Signup to Summarize"
 
 #: conf/words.py:378 conf/words.py:379
 msgid "Your Answer"
-msgstr ""
+msgstr "Your Summary"
 
 #: conf/words.py:387 conf/words.py:388
 msgid "Add Answer"
-msgstr ""
+msgstr "Submit Summary"
 
 #: conf/words.py:396 conf/words.py:397
 msgid "give an answer interesting to this community"
-msgstr ""
+msgstr "submit a summary interesting to this community"
 
 #: conf/words.py:405 conf/words.py:406
 msgid "try to give an answer, rather than engage into a discussion"
-msgstr ""
+msgstr "try to submit a summary, rather than engage into a discussion"
 
 #: conf/words.py:414 conf/words.py:415
 msgid "show only selected answers to enquirers"
-msgstr ""
+msgstr "show only selected summaries to enquirers"
 
 #: conf/words.py:423 conf/words.py:424
 msgid "UNANSWERED"
-msgstr ""
+msgstr "UNSUMMARIZED"
 
 #: conf/words.py:432 conf/words.py:433
 msgid "Edit Answer"
-msgstr ""
+msgstr "Edit Summary"
 
 #: conf/words.py:441 conf/words.py:442
 msgid "Answered"
-msgstr ""
+msgstr "Summarized"
 
 #: const/__init__.py:11
 msgid "duplicate question"
-msgstr ""
+msgstr "duplicate bill"
 
 #: const/__init__.py:12
 msgid "question is off-topic or not relevant"
-msgstr ""
+msgstr "bill is off-topic or not relevant"
 
 #: const/__init__.py:13
 msgid "too subjective and argumentative"
@@ -2741,19 +2744,19 @@ msgstr ""
 
 #: const/__init__.py:14
 msgid "not a real question"
-msgstr ""
+msgstr "not a real bill"
 
 #: const/__init__.py:15
 msgid "the question is answered, right answer was accepted"
-msgstr ""
+msgstr "this bill is summarized, best summary was chosen"
 
 #: const/__init__.py:16
 msgid "question is not relevant or outdated"
-msgstr ""
+msgstr "bill is not relevant or outdated"
 
 #: const/__init__.py:17
 msgid "question contains offensive or malicious remarks"
-msgstr ""
+msgstr "bill contains offensive or malicious remarks"
 
 #: const/__init__.py:18
 msgid "spam or advertising"
@@ -2853,7 +2856,7 @@ msgstr ""
 
 #: const/__init__.py:127
 msgid "unanswered"
-msgstr ""
+msgstr "unsummarized"
 
 #: const/__init__.py:128
 msgid "followed"
@@ -2869,35 +2872,35 @@ msgstr ""
 
 #: const/__init__.py:143
 msgid "Question has no answers"
-msgstr ""
+msgstr "Bill has no summaries"
 
 #: const/__init__.py:144
 msgid "Question has no accepted answers"
-msgstr ""
+msgstr "Bill has no chosen summaries"
 
 #: const/__init__.py:200
 msgid "asked a question"
-msgstr ""
+msgstr "added a bill"
 
 #: const/__init__.py:201
 msgid "answered a question"
-msgstr ""
+msgstr "submitted a summary"
 
 #: const/__init__.py:202 const/__init__.py:306
 msgid "commented question"
-msgstr ""
+msgstr "commented bill"
 
 #: const/__init__.py:203 const/__init__.py:307
 msgid "commented answer"
-msgstr ""
+msgstr "commented summary"
 
 #: const/__init__.py:204
 msgid "edited question"
-msgstr ""
+msgstr "edited bill"
 
 #: const/__init__.py:205
 msgid "edited answer"
-msgstr ""
+msgstr "edited summary"
 
 #: const/__init__.py:206
 msgid "received badge"
@@ -2905,7 +2908,7 @@ msgstr ""
 
 #: const/__init__.py:207
 msgid "marked best answer"
-msgstr ""
+msgstr "marked best summary"
 
 #: const/__init__.py:208
 msgid "upvoted"
@@ -2921,11 +2924,11 @@ msgstr ""
 
 #: const/__init__.py:211
 msgid "deleted question"
-msgstr ""
+msgstr "deleted bill"
 
 #: const/__init__.py:212
 msgid "deleted answer"
-msgstr ""
+msgstr "deleted summary"
 
 #: const/__init__.py:213
 msgid "marked offensive"
@@ -2953,11 +2956,11 @@ msgstr ""
 
 #: const/__init__.py:221
 msgid "reminder about unanswered questions sent"
-msgstr ""
+msgstr "reminder about unsummarized bills sent"
 
 #: const/__init__.py:225
 msgid "reminder about accepting the best answer sent"
-msgstr ""
+msgstr "reminder about choosing the best summary sent"
 
 #: const/__init__.py:227
 msgid "mentioned in the post"
@@ -2989,11 +2992,11 @@ msgstr ""
 
 #: const/__init__.py:305
 msgid "answered question"
-msgstr ""
+msgstr "summarized bill"
 
 #: const/__init__.py:308
 msgid "accepted answer"
-msgstr ""
+msgstr "chosen summary"
 
 #: const/__init__.py:312
 msgid "[closed]"
@@ -3130,11 +3133,11 @@ msgstr ""
 
 #: const/message_keys.py:21
 msgid "most relevant questions"
-msgstr ""
+msgstr "most relevant bills"
 
 #: const/message_keys.py:22
 msgid "click to see most relevant questions"
-msgstr ""
+msgstr "click to see most relevant bills"
 
 #: const/message_keys.py:23
 msgid "by relevance"
@@ -3142,7 +3145,7 @@ msgstr ""
 
 #: const/message_keys.py:24
 msgid "click to see the oldest questions"
-msgstr ""
+msgstr "click to see the oldest bills"
 
 #: const/message_keys.py:25
 msgid "by date"
@@ -3150,11 +3153,11 @@ msgstr ""
 
 #: const/message_keys.py:26
 msgid "click to see the newest questions"
-msgstr ""
+msgstr "click to see the newest bills"
 
 #: const/message_keys.py:27
 msgid "click to see the least recently updated questions"
-msgstr ""
+msgstr "click to see the least recently updated bills"
 
 #: const/message_keys.py:28
 msgid "by activity"
@@ -3162,23 +3165,23 @@ msgstr ""
 
 #: const/message_keys.py:29
 msgid "click to see the most recently updated questions"
-msgstr ""
+msgstr "click to see the most recently updated bills"
 
 #: const/message_keys.py:30
 msgid "click to see the least answered questions"
-msgstr ""
+msgstr "click to see the least answered bills"
 
 #: const/message_keys.py:31
 msgid "by answers"
-msgstr ""
+msgstr "by summaries"
 
 #: const/message_keys.py:32
 msgid "click to see the most answered questions"
-msgstr ""
+msgstr "click to see the most summarized bills"
 
 #: const/message_keys.py:33
 msgid "click to see least voted questions"
-msgstr ""
+msgstr "click to see least voted bills"
 
 #: const/message_keys.py:34
 msgid "by votes"
@@ -3186,7 +3189,7 @@ msgstr ""
 
 #: const/message_keys.py:35
 msgid "click to see most voted questions"
-msgstr ""
+msgstr "click to see most voted bills"
 
 #: const/message_keys.py:36 models/tag.py:311
 msgid "interesting"
@@ -3544,7 +3547,7 @@ msgstr ""
 
 #: mail/__init__.py:188
 msgid "<li>Type details of your question into the email body</li>"
-msgstr ""
+msgstr "<li>Type details of your bill into the email body</li>"
 
 #: mail/__init__.py:191
 msgid ""
@@ -3570,6 +3573,8 @@ msgid ""
 "<p>Sorry, there was an error posting your question please contact the "
 "%(site)s administrator</p>"
 msgstr ""
+"<p>Sorry, there was an error adding your bill please contact the \n"
+"%(site)s administrator</p>"
 
 #: mail/__init__.py:241
 #, python-format
@@ -3577,12 +3582,16 @@ msgid ""
 "<p>Sorry, in order to post questions on %(site)s by email, please <a href="
 "\"%(url)s\">register first</a></p>"
 msgstr ""
+"<p>Sorry, in order to add bills on %(site)s by email, please <a href=\n"
+"\\\"%(url)s\\\">register first</a></p>"
 
 #: mail/__init__.py:249
 msgid ""
 "<p>Sorry, your question could not be posted due to insufficient privileges "
 "of your user account</p>"
 msgstr ""
+"<p>Sorry, your bill could not be added due to insufficient privileges \n"
+"of your user account</p>"
 
 #: mail/lamson_handlers.py:162
 msgid ""
@@ -3608,33 +3617,33 @@ msgstr ""
 #: management/commands/send_accept_answer_reminders.py:61
 #, python-format
 msgid "Accept the best answer for %(question_count)d of your questions"
-msgstr ""
+msgstr "Choose the best summary for %(question_count)d of your bills"
 
 #: management/commands/send_accept_answer_reminders.py:66
 msgid "Please accept the best answer for this question:"
-msgstr ""
+msgstr "Please choose the best summary for this bill:"
 
 #: management/commands/send_accept_answer_reminders.py:68
 msgid "Please accept the best answer for these questions:"
-msgstr ""
+msgstr "Please choose the best summary for these bills:"
 
 #: management/commands/send_email_alerts.py:436
 #, python-format
 msgid "%(question_count)d updated question about %(topics)s"
 msgid_plural "%(question_count)d updated questions about %(topics)s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(question_count)d updated bill about %(topics)s"
+msgstr[1] "%(question_count)d updated bills about %(topics)s"
 
 #: management/commands/send_email_alerts.py:457
 msgid "new question"
-msgstr ""
+msgstr "new bill"
 
 #: management/commands/send_unanswered_question_reminders.py:67
 #, python-format
 msgid "%(question_count)d unanswered question about %(topics)s"
 msgid_plural "%(question_count)d unanswered questions about %(topics)s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(question_count)d unanswered bill about %(topics)s"
+msgstr[1] "%(question_count)d unanswered bills about %(topics)s"
 
 #: middleware/forum_mode.py:63
 #, python-format
@@ -3653,33 +3662,33 @@ msgstr ""
 msgid ""
 "Sorry, you cannot accept or unaccept best answers because your account is "
 "blocked"
-msgstr ""
+msgstr "Sorry, you cannot select or deselect best summaries because your account is blocked"
 
 #: models/__init__.py:649
 msgid ""
 "Sorry, you cannot accept or unaccept best answers because your account is "
 "suspended"
-msgstr ""
+msgstr "Sorry, you cannot select or deselect best summaries because your account is suspended"
 
 #: models/__init__.py:663
 #, python-format
 msgid ""
 ">%(points)s points required to accept or unaccept  your own answer to your "
 "own question"
-msgstr ""
+msgstr ">%(points)s points required to select or deselect your own summary to your own bill"
 
 #: models/__init__.py:687
 #, python-format
 msgid ""
 "Sorry, you will be able to accept this answer only after %(will_be_able_at)s"
-msgstr ""
+msgstr "Sorry, you will be able to summarize this bill only after %(will_be_able_at)s"
 
 #: models/__init__.py:696
 #, python-format
 msgid ""
 "Sorry, only moderators or original author of the question  - %(username)s - "
 "can accept or unaccept the best answer"
-msgstr ""
+msgstr "Sorry, only moderators or original author of the bill - %(username)s - can select or deselect the best summary"
 
 #: models/__init__.py:719
 msgid "Sorry, you cannot vote for your own posts"
@@ -3726,7 +3735,7 @@ msgstr ""
 
 #: models/__init__.py:807
 msgid "Sorry, you already gave an answer, please edit it instead."
-msgstr ""
+msgstr "Sorry, you already submitted a summary, please edit it instead"
 
 #: models/__init__.py:831
 #, python-format
@@ -3753,7 +3762,7 @@ msgstr ""
 msgid ""
 "Sorry, to comment any post a minimum reputation of %(min_rep)s points is "
 "required. You can still comment your own posts and answers to your questions"
-msgstr ""
+msgstr "Sorry, to comment any post a minimum reputation of %(min_rep)s points is required. You can still comment your own posts and summaries to your bills"
 
 #: models/__init__.py:906
 msgid ""
@@ -3816,11 +3825,11 @@ msgstr ""
 
 #: models/__init__.py:1062
 msgid "Sorry, since your account is blocked you cannot close questions"
-msgstr ""
+msgstr "Sorry, since your account is blocked you cannot close bills"
 
 #: models/__init__.py:1066
 msgid "Sorry, since your account is suspended you cannot close questions"
-msgstr ""
+msgstr "Sorry, since your account is suspended you cannot close bills"
 
 #: models/__init__.py:1070
 #, python-format
@@ -3840,7 +3849,7 @@ msgstr ""
 msgid ""
 "Sorry, only administrators, moderators or post owners with reputation > "
 "%(min_rep)s can reopen questions."
-msgstr ""
+msgstr "Sorry, to close own bill a minimum reputation of %(min_rep)s is required"
 
 #: models/__init__.py:1112
 #, python-format
@@ -3850,7 +3859,7 @@ msgstr ""
 
 #: models/__init__.py:1117
 msgid "Sorry, you cannot reopen questions because your account is blocked"
-msgstr ""
+msgstr "Sorry, to reopen own bill a minimum reputation of %(min_rep)s is required"
 
 #: models/__init__.py:1122
 msgid "Sorry, you cannot reopen questions because your account is suspended"
@@ -3858,7 +3867,7 @@ msgstr ""
 
 #: models/__init__.py:1145
 msgid "You have flagged this question before and cannot do it more than once"
-msgstr ""
+msgstr "You have flagged this bill before and cannot do it more than once"
 
 #: models/__init__.py:1153
 msgid "Sorry, since your account is blocked you cannot flag posts as offensive"
@@ -3916,18 +3925,18 @@ msgstr ""
 
 #: models/__init__.py:1265
 msgid "Sorry, since your account is blocked you cannot retag questions"
-msgstr ""
+msgstr "Sorry, since your account is blocked you cannot retag bills"
 
 #: models/__init__.py:1269
 msgid ""
 "Sorry, since your account is suspended you can retag only your own questions"
-msgstr ""
+msgstr "Sorry, since your account is suspended you can retag only your own bills"
 
 #: models/__init__.py:1273
 #, python-format
 msgid ""
 "Sorry, to retag questions a minimum reputation of %(min_rep)s is required"
-msgstr ""
+msgstr "Sorry, to retag bills a minimum reputation of %(min_rep)s is required"
 
 #: models/__init__.py:1292
 msgid "Sorry, since your account is blocked you cannot delete comment"
@@ -4386,11 +4395,11 @@ msgstr ""
 
 #: models/post.py:418
 msgid "Question: "
-msgstr ""
+msgstr "Bill: "
 
 #: models/post.py:420
 msgid "Answer: "
-msgstr ""
+msgstr "Summary: "
 
 #: models/post.py:912 templates/question/answer_controls.html:58
 #: templatetags/extra_filters_jinja.py:128
@@ -4399,29 +4408,29 @@ msgstr ""
 
 #: models/post.py:1602
 msgid "Sorry, this question has been deleted and is no longer accessible"
-msgstr ""
+msgstr "Sorry, this bill has been deleted and is no longer accessible"
 
 #: models/post.py:1618
 msgid ""
 "Sorry, the answer you are looking for is no longer available, because the "
 "parent question has been removed"
-msgstr ""
+msgstr "Sorry, the summary you are looking for is no longer available, because the parent bill has been removed"
 
 #: models/post.py:1625
 msgid "Sorry, this answer has been removed and is no longer accessible"
-msgstr ""
+msgstr "Sorry, this summary has been removed and is no longer accessible"
 
 #: models/post.py:1641
 msgid ""
 "Sorry, the comment you are looking for is no longer accessible, because the "
 "parent question has been removed"
-msgstr ""
+msgstr "Sorry, the comment you are looking for is no longer accessible, because the parent bill has been removed"
 
 #: models/post.py:1648
 msgid ""
 "Sorry, the comment you are looking for is no longer accessible, because the "
 "parent answer has been removed"
-msgstr ""
+msgstr "Sorry, the comment you are looking for is no longer accessible, because the parent summary has been removed"
 
 #: models/post.py:1670
 msgid "This post is temporarily not available"
@@ -4474,11 +4483,11 @@ msgstr ""
 #: models/question.py:1603
 #, python-format
 msgid "Please, <a href=\"%s\">review your question</a>."
-msgstr ""
+msgstr "Please, <a href=\\\"%s\\\">review your bill</a>."
 
 #: models/reply_by_email.py:38
 msgid "Post an answer"
-msgstr ""
+msgstr "Submit a summary"
 
 #: models/reply_by_email.py:39
 msgid "Post a comment"
@@ -4494,7 +4503,7 @@ msgstr ""
 
 #: models/reply_by_email.py:42
 msgid "Answer or comment, depending on the size of post"
-msgstr ""
+msgstr "Summarize or comment, depending on the size of post"
 
 #: models/reply_by_email.py:43
 msgid "Validate email and record signature"
@@ -4518,14 +4527,14 @@ msgstr ""
 msgid ""
 "%(points)s points were added for %(username)s's contribution to question "
 "%(question_title)s"
-msgstr ""
+msgstr "%(points)s points were added for %(username)s's contribution to bill %(question_title)s"
 
 #: models/repute.py:223
 #, python-format
 msgid ""
 "%(points)s points were subtracted for %(username)s's contribution to "
 "question %(question_title)s"
-msgstr ""
+msgstr "%(points)s points were subtracted for %(username)s's contribution to bill %(question_title)s"
 
 #: models/tag.py:209
 #, python-format
@@ -4538,15 +4547,15 @@ msgstr ""
 
 #: models/user.py:317
 msgid "Questions that I asked"
-msgstr ""
+msgstr "Bills that I posted"
 
 #: models/user.py:318
 msgid "Questions that I answered"
-msgstr ""
+msgstr "Bills that I summarized"
 
 #: models/user.py:319
 msgid "Individually selected questions"
-msgstr ""
+msgstr "Individually selected bills"
 
 #: models/user.py:320
 msgid "Mentions and comment responses"
@@ -4680,7 +4689,7 @@ msgstr ""
 msgid ""
 "since you are not logged in right now, you will be asked to sign in or "
 "register after posting your question"
-msgstr ""
+msgstr "since you are not logged in right now, you will be asked to sign in or register after posting your bill"
 
 #: templates/ask.html:25
 #, python-format
@@ -4689,7 +4698,7 @@ msgid ""
 "verify your email, please see <a href='%(email_validation_faq_url)s'>more "
 "details here</a>. You can submit your question now and validate email after "
 "that. Meanwhile, your question will saved as pending."
-msgstr ""
+msgstr "Your email, %(email)s has not yet been validated. To post messages you must verify your email, please see <a href='%(email_validation_faq_url)s'>more details here</a>. You can post your bill now and validate email after that. Meanwhile, your bill will be saved as pending."
 
 #: templates/ask.html:30 templates/widgets/answer_edit_tips.html:8
 #: templates/widgets/question_edit_tips.html:6
