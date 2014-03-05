@@ -105,7 +105,7 @@ test: env depends
 	$(MANAGE) test askbot
 
 .PHONY: ci
-ci: db
+ci: db test
 
 # Cleanup ####################################################################
 
