@@ -107,7 +107,7 @@ ci: db
 # Cleanup ####################################################################
 
 .PHONY: clean
-clean: .clean-dist .clean-test .clean-doc .clean-build
+clean: .clean-dist .clean-test .clean-doc .clean-build .clean-messages
 	rm -rf $(DB)
 
 .PHONY: clean-all
@@ -143,6 +143,10 @@ clean-all-cache: clean-all .clean-cache
 .PHONY: .clean-dist
 .clean-dist:
 	rm -rf dist build
+
+.PHONY: .clean-messages
+.clean-messages:
+	rm -f askbot/locale/en/LC_MESSAGES/*.mo
 
 # Server ####################################################################
 
