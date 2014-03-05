@@ -54,6 +54,8 @@ recaptcha
 *.DS_Store
 htmlcov
 
+askbot/locale/en/LC_MESSAGES/*.mo
+
 env
 .cache
 deploy
