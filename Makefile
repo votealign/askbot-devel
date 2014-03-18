@@ -44,8 +44,8 @@ NOSE := $(BIN)/nosetests$(EXE)
 DEPLOY := deploy
 SETUP := $(BIN)/askbot-setup$(EXE)
 DB := $(DEPLOY)/db.sqlite3
-MANAGE := $(PYTHON) $(PWD)/$(DEPLOY)/manage.py
-ADMIN := $(PYTHON) $(PWD)/$(BIN)/django-admin.py
+MANAGE := $(PYTHON) '$(shell cygpath -w $(PWD)/$(DEPLOY)/manage.py)'
+ADMIN := $(PYTHON) '$(shell cygpath -w $(PWD)/$(BIN)/django-admin.py)'
 
 # Installation ###############################################################
 
@@ -59,7 +59,7 @@ $(INSTALLED): $(SOURCES)
 	rm -rf $(DEPLOY) ; mkdir $(DEPLOY)
 	# for --db-engine: 1 is PostgreSQL, 2 is SQLite, 3 is MySQL
 	echo $(DB) | $(SETUP) --dir-name=$(DEPLOY) \
-	                      --db-engine=2 --db-name=votealign
+	                      --db-engine=2 --db-name=votealign \
 	                      --db-user=votealign --db-password=votealign
 	touch $(INSTALLED)  # flag to indicate project is installed
 
