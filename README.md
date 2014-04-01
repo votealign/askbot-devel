@@ -32,7 +32,7 @@ Installation
 
 Clone and enter this repository:
 
-    git clone https://votealign/votealign.git
+    git clone https://github.com/votealign/votealign.git
     cd votealign
 
 Create a virtualenv and local deployment:
