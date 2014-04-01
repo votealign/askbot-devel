@@ -107,6 +107,16 @@ test: env depends
 .PHONY: ci
 ci: db
 
+# Data #######################################################################
+
+.PHONY: dumpdata
+dumpdata:
+	$(MANAGE) dumpdata
+
+.PHONY: loaddata
+loaddata:
+	$(MANAGE) loaddata $(PACKAGE)/fixtures/initial_data.json
+
 # Cleanup ####################################################################
 
 .PHONY: clean
@@ -167,7 +177,7 @@ assets: db messages
 
 .PHONY: db
 db: env $(DB)
-$(DB):
+$(DB): $(PACKAGE)/fixtures/initial_data.json
 	$(MAKE) syncdb migrate collectstatic
 
 .PHONY: syncdb
