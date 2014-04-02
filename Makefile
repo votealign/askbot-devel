@@ -102,10 +102,20 @@ check: pep8 pep257 pylint
 
 .PHONY: test
 test: env depends
-	DJANGO_SETTINGS_MODULE=$(DEPLOY)/settings $(NOSE)
+	$(MANAGE) test askbot
 
 .PHONY: ci
-ci: db
+ci: db test
+
+# Data #######################################################################
+
+.PHONY: dumpdata
+dumpdata:
+	$(MANAGE) dumpdata
+
+.PHONY: loaddata
+loaddata:
+	$(MANAGE) loaddata $(PACKAGE)/fixtures/initial_data.json
 
 # Cleanup ####################################################################
 
@@ -167,7 +177,7 @@ assets: db messages
 
 .PHONY: db
 db: env $(DB)
-$(DB):
+$(DB): $(PACKAGE)/fixtures/initial_data.json
 	$(MAKE) syncdb migrate collectstatic
 
 .PHONY: syncdb
