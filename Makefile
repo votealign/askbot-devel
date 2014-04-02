@@ -102,10 +102,10 @@ check: pep8 pep257 pylint
 
 .PHONY: test
 test: env depends
-	DJANGO_SETTINGS_MODULE=$(DEPLOY)/settings $(NOSE)
+	$(MANAGE) test askbot
 
 .PHONY: ci
-ci: db
+ci: db test
 
 # Data #######################################################################
 
