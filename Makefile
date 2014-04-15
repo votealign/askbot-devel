@@ -115,7 +115,8 @@ dumpdata:
 
 .PHONY: loaddata
 loaddata:
-	$(MANAGE) loaddata $(PACKAGE)/fixtures/initial_data.json
+	$(MANAGE) loaddata $(PACKAGE)/fixtures/users.json
+	$(MANAGE) loaddata $(PACKAGE)/fixtures/decisions.json	
 
 # Cleanup ####################################################################
 
