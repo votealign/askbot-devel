@@ -60,6 +60,6 @@ As far as we can tell, all displayed English text is located in:
 * [askbot/conf/words.py](askbot/conf/words.py)
 
 The compiled translations (*.mo) are created from *.po files using `gettext`.
-Default (English) phrases are located in words.py. For this project, the ASKBOT->VoteAlign mappings will be done in the English (en) *.po files. Compile new messages before starting the server:
+Default (English) phrases are located in words.py. For this project, the Askbot->VoteAlign mappings will be done in the English (en) *.po files. Compile new messages before starting the server:
 
     make messages
