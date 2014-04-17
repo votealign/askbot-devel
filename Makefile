@@ -107,16 +107,58 @@ test: env depends
 .PHONY: ci
 ci: db test
 
-# Data #######################################################################
+# Data Fixtures ##############################################################
 
 .PHONY: dumpdata
-dumpdata:
+dumpdata: env
 	$(MANAGE) dumpdata
 
 .PHONY: loaddata
-loaddata:
+loaddata: env
 	$(MANAGE) loaddata $(PACKAGE)/fixtures/users.json
 	$(MANAGE) loaddata $(PACKAGE)/fixtures/decisions.json	
+
+# Assets #####################################################################
+
+.PHONY: assets
+assets: db messages
+
+.PHONY: db
+db: env $(DB)
+$(DB): $(PACKAGE)/fixtures/*.json
+	$(MAKE) syncdb migrate collectstatic loaddata
+
+.PHONY: syncdb
+syncdb:
+	$(MANAGE) syncdb --noinput
+
+.PHONY: migrate
+migrate:
+	$(MANAGE) migrate
+
+.PHONY: collectstatic
+collectstatic:
+	$(MANAGE) collectstatic --noinput
+
+.PHONY: messages
+messages: askbot/locale/en/LC_MESSAGES/*.mo
+askbot/locale/en/LC_MESSAGES/*.mo: askbot/locale/en/LC_MESSAGES/*.po
+	# makemessages compiles .po files from the source code.
+	# cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) makemessages -l en
+	# compilemessages compiles .mo files from the .po files.
+	cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) compilemessages -l en
+
+# Server #####################################################################
+
+.PHONY: serve
+serve: env assets
+	$(MANAGE) runserver [::]:8000
+
+.PHONY: launch
+launch:
+	# launch the web interface after a delay for the server to start
+	eval "sleep 10; $(OPEN) http://localhost:8000" &
+	$(MAKE) serve
 
 # Cleanup ####################################################################
 
@@ -161,42 +203,3 @@ clean-all-cache: clean-all .clean-cache
 .PHONY: .clean-messages
 .clean-messages:
 	rm -f askbot/locale/en/LC_MESSAGES/*.mo
-
-# Server ####################################################################
-
-.PHONY: serve
-serve: env assets
-	$(MANAGE) runserver [::]:8000
-
-.PHONY: launch
-launch:
-	eval "sleep 10; $(OPEN) http://localhost:8000" &
-	$(MAKE) serve
-
-.PHONY: assets
-assets: db messages
-
-.PHONY: db
-db: env $(DB)
-$(DB): $(PACKAGE)/fixtures/initial_data.json
-	$(MAKE) syncdb migrate collectstatic
-
-.PHONY: syncdb
-syncdb:
-	$(MANAGE) syncdb --noinput
-
-.PHONY: migrate
-migrate:
-	$(MANAGE) migrate
-
-.PHONY: collectstatic
-collectstatic:
-	$(MANAGE) collectstatic --noinput
-
-.PHONY: messages
-messages: askbot/locale/en/LC_MESSAGES/*.mo
-askbot/locale/en/LC_MESSAGES/*.mo: askbot/locale/en/LC_MESSAGES/*.po
-	# makemessages compiles .po files from the source code.
-	# cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) makemessages -l en
-	# compilemessages compiles .mo files from the .po files.
-	cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) compilemessages -l en
