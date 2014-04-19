@@ -3,7 +3,7 @@ VoteAlign
 
 [![Build Status](https://travis-ci.org/votealign/votealign.png?branch=master)](https://travis-ci.org/votealign/votealign)
 
-VoteAlign is forked from Askbot, an open-source Q&A system.
+VoteAlign is built on Askbot, an open-source Q&A system.
 
 
 
