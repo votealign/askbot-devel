@@ -4865,6 +4865,10 @@ msgid ""
 "rough measure of the community trust to him/her. Various moderation tasks "
 "are gradually assigned to the users based on those points."
 msgstr ""
+"When a bill or summary is voted on, the user who posted them will gain "
+"some points, which are called \\\"karma points\\\". These points serve as a "
+"rough measure of the community trust to him/her. Various moderation tasks "
+"are gradually assigned to the users based on those points."
 
 #: templates/faq_static.html:22
 #, python-format
@@ -4878,6 +4882,14 @@ msgid ""
 "can be accumulated for a question or answer per day. The table below "
 "explains reputation point requirements for each type of moderation task."
 msgstr ""
+"For example, if you submit an accurate summary, "
+"your input will be upvoted. On the other hand if the summary is misleading - "
+"it will be downvoted. Each vote in favor will generate <strong>"
+"%(REP_GAIN_FOR_RECEIVING_UPVOTE)s</strong> points, each vote against will "
+"subtract <strong>%(REP_LOSS_FOR_RECEIVING_DOWNVOTE)s</strong> points. There "
+"is a limit of <strong>%(MAX_REP_GAIN_PER_USER_PER_DAY)s</strong> points that "
+"can be accumulated for a question or answer per day. The table below "
+"explains reputation point requirements for each type of moderation task."
 
 #: templates/faq_static.html:32 templates/user_profile/user_votes.html:14
 msgid "upvote"
@@ -4893,23 +4905,23 @@ msgstr ""
 
 #: templates/faq_static.html:45
 msgid " accept own answer to own questions"
-msgstr ""
+msgstr " accept summary to your sumitted bill"
 
 #: templates/faq_static.html:49
 msgid "open and close own questions"
-msgstr ""
+msgstr "open and close own bills"
 
 #: templates/faq_static.html:53
 msgid "retag other's questions"
-msgstr ""
+msgstr "retag other's bills"
 
 #: templates/faq_static.html:58
 msgid "edit community wiki questions"
-msgstr ""
+msgstr "edit community wiki bills"
 
 #: templates/faq_static.html:63
 msgid "edit any answer"
-msgstr ""
+msgstr "edit any summary"
 
 #: templates/faq_static.html:67
 msgid "delete any comment"
@@ -4952,7 +4964,7 @@ msgstr ""
 
 #: templates/faq_static.html:77
 msgid "Why other people can edit my questions/answers?"
-msgstr ""
+msgstr "Why other people can edit my summaries?"
 
 #: templates/faq_static.html:78
 msgid "Goal of this site is..."
@@ -5086,28 +5098,36 @@ msgid ""
 "This site is for asking and answering questions, not for open-ended "
 "discussions."
 msgstr ""
+"This site is for summarizing bills, not for open-ended "
+"discussions."
 
 #: templates/help.html:19
 msgid ""
 "We encourage everyone to use “question” space for asking and “answer” for "
 "answering."
 msgstr ""
+"We encourage everyone to use “bill” space for adding bills and “summary” for "
+"providing bill summaries."
 
 #: templates/help.html:22
 msgid ""
 "Despite that, each question and answer can be commented – \n"
 "    the comments are good for the limited discussions."
 msgstr ""
+"Despite that, each bill and summary can be commented – \n"
+"    the comments are good for the limited discussions."
 
 #: templates/help.html:26
 msgid "Please search before asking your questions"
-msgstr ""
+msgstr "Please search before submitting a new bill"
 
 #: templates/help.html:27
 msgid ""
 "Type your question in the search bar and see whether a similar question has "
 "been asked before"
 msgstr ""
+"Type your bill in the search bar and see whether the bill has already been "
+"added"
 
 #: templates/help.html:29
 msgid "Search has advanced capabilities:"
@@ -5153,6 +5173,8 @@ msgid ""
 "Voting in %(app_name)s helps to select best answers and thank most helpful "
 "users."
 msgstr ""
+"Voting in %(app_name)s helps to select best summaries and thank most helpful "
+"users."
 
 #: templates/help.html:47
 #, python-format
@@ -5219,7 +5241,7 @@ msgstr ""
 
 #: templates/list_suggested_tags.html:14
 msgid "Suggested tag was used for questions"
-msgstr ""
+msgstr "Suggested tag was used for bills"
 
 #: templates/list_suggested_tags.html:34 templates/list_suggested_tags.html:45
 msgid "Accept"
@@ -5231,12 +5253,12 @@ msgstr ""
 
 #: templates/list_suggested_tags.html:38
 msgid "There are no questions with this tag yet"
-msgstr ""
+msgstr "There are no bills with this tag yet"
 
 #: templates/list_suggested_tags.html:61
 #, python-format
 msgid "Apply tag \"%(name)s\" to all above questions"
-msgstr ""
+msgstr "Apply tag \"%(name)s\" to all above bills"
 
 #: templates/list_suggested_tags.html:62
 msgid "Reject tag"
@@ -5309,7 +5331,7 @@ msgstr ""
 #: templates/macros.html:314
 #, python-format
 msgid "see questions tagged '%(tag)s'"
-msgstr ""
+msgstr "see bills tagged '%(tag)s'"
 
 #: templates/macros.html:395
 msgid "Comments"
@@ -5327,7 +5349,7 @@ msgstr ""
 
 #: templates/macros.html:455
 msgid "convert to answer"
-msgstr ""
+msgstr "convert to summary"
 
 #: templates/macros.html:582
 #, python-format
@@ -5410,7 +5432,7 @@ msgstr ""
 
 #: templates/main_page.html:14
 msgid "Questions"
-msgstr ""
+msgstr "Bills"
 
 #: templates/question.html:232
 msgid "see more comments"
@@ -5499,12 +5521,12 @@ msgstr ""
 #: templates/users.html:8 templates/users.html.py:18
 #: templates/tags/list_bulk_tag_subscription.html:13
 msgid "Users"
-msgstr "People"
+msgstr "Citizens"
 
 #: templates/users.html:16
 #, python-format
 msgid "Users in group %(name)s"
-msgstr ""
+msgstr "Citizens in group %(name)s"
 
 #: templates/users.html:24
 msgid "Select/Sort by &raquo;"
@@ -5513,7 +5535,7 @@ msgstr ""
 #: templates/users.html:29
 #, python-format
 msgid "people in group %(name)s"
-msgstr ""
+msgstr "citizens in group %(name)s"
 
 #: templates/users.html:33 templates/main_page/tab_bar.html:17
 #: templates/tags/header.html:14
@@ -5522,7 +5544,7 @@ msgstr ""
 
 #: templates/users.html:40
 msgid "see people with the highest reputation"
-msgstr ""
+msgstr "see citizens with the highest reputation"
 
 #: templates/users.html:41 templates/user_profile/user_info.html:25
 #: templates/user_profile/user_reputation.html:5
@@ -5532,7 +5554,7 @@ msgstr ""
 
 #: templates/users.html:47
 msgid "see people who joined most recently"
-msgstr ""
+msgstr "see citizens who joined most recently"
 
 #: templates/users.html:48
 msgid "recent"
@@ -5540,11 +5562,11 @@ msgstr ""
 
 #: templates/users.html:53
 msgid "see people who joined the site first"
-msgstr ""
+msgstr "see citizens who joined the site first"
 
 #: templates/users.html:59
 msgid "see people sorted by name"
-msgstr ""
+msgstr "see citizens sorted by name"
 
 #: templates/users.html:60
 msgid "by username"
@@ -5553,7 +5575,7 @@ msgstr ""
 #: templates/users.html:66
 #, python-format
 msgid "users matching query %(search_query)s:"
-msgstr ""
+msgstr "citizens matching query %(search_query)s:"
 
 #: templates/users.html:69
 msgid "Nothing found."
@@ -5641,7 +5663,7 @@ msgstr ""
 
 #: templates/authopenid/confirm_email.txt:1
 msgid "Thank you for registering at our Q&A forum!"
-msgstr ""
+msgstr "Thank you for registering at VoteAlign!"
 
 #: templates/authopenid/confirm_email.txt:3
 msgid "Your account details are:"
@@ -5665,6 +5687,8 @@ msgid ""
 "Sincerely,\n"
 "Q&A Forum Administrator"
 msgstr ""
+"Sincerely,\n"
+"VoteAlign Administrator"
 
 #: templates/authopenid/email_validation.html:2
 #: templates/authopenid/email_validation.html:3
@@ -5692,7 +5716,7 @@ msgstr ""
 
 #: templates/authopenid/email_validation.txt:1
 msgid "Greetings from the Q&A forum"
-msgstr ""
+msgstr "Greetings from VoteAlign"
 
 #: templates/authopenid/logout.html:3
 msgid "Logout"
@@ -5722,7 +5746,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"<span class=\"strong big\">Your answer to </span> <i>\"<strong>%(title)s</"
+"<span class=\"strong big\">Your summary to </span> <i>\"<strong>%(title)s</"
 "strong> %(summary)s...\"</i> <span class=\"strong big\">is saved and will be "
 "posted once you log in.</span>"
 
@@ -5734,7 +5758,7 @@ msgid ""
 "        %(title)s will be posted once you log in\n"
 "        "
 msgstr ""
-"<span class=\"strong big\">Your question</span> <i>\"<strong>%(title)s</"
+"<span class=\"strong big\">This bill</span> <i>\"<strong>%(title)s</"
 "strong> %(summary)s...\"</i> <span class=\"strong big\">is saved and will be "
 "posted once you log in.</span>"
 
@@ -6086,7 +6110,7 @@ msgstr ""
 #: templates/email/macros.html:19
 #, python-format
 msgid "Question by %(author)s:"
-msgstr ""
+msgstr "Bill submitted by %(author)s:"
 
 #: templates/email/macros.html:21
 #, python-format
@@ -6095,11 +6119,14 @@ msgid ""
 "                                In reply to %(author)s's question:\n"
 "                            "
 msgstr ""
+"\n"
+"                                In summary of %(author)s's submitted bill:\n"
+"                            "
 
 #: templates/email/macros.html:33
 #, python-format
 msgid "Asked by %(author)s:"
-msgstr ""
+msgstr "Submitted by %(author)s:"
 
 #: templates/email/macros.html:40
 msgid "Tags:"
@@ -6112,6 +6139,9 @@ msgid ""
 "                                %(author)s's answer:\n"
 "                            "
 msgstr ""
+"\n"
+"                                %(author)s's summary:\n"
+"                            "
 
 #: templates/email/macros.html:52
 #, python-format
@@ -6120,11 +6150,14 @@ msgid ""
 "                                In reply to %(author)s's answer:\n"
 "                            "
 msgstr ""
+"\n"
+"                                In reply to %(author)s's summary:\n"
+"                            "
 
 #: templates/email/macros.html:57
 #, python-format
 msgid "Answered by %(author)s:"
-msgstr ""
+msgstr "Summarized by %(author)s:"
 
 #: templates/email/macros.html:64
 #, python-format
@@ -6551,7 +6584,13 @@ msgid_plural ""
 "            %(counter)s Answers\n"
 "        "
 msgstr[0] ""
+"\n"
+"            %(counter)s Summary\n"
+"            "
 msgstr[1] ""
+"\n"
+"            %(counter)s Summaries\n"
+"        "
 
 #: templates/question/answer_tab_bar.html:11
 msgid "Sort by »"
@@ -6559,15 +6598,15 @@ msgstr ""
 
 #: templates/question/answer_tab_bar.html:14
 msgid "oldest answers will be shown first"
-msgstr ""
+msgstr "oldest summaries will be shown first"
 
 #: templates/question/answer_tab_bar.html:17
 msgid "newest answers will be shown first"
-msgstr ""
+msgstr "newest summaries will be shown first"
 
 #: templates/question/answer_tab_bar.html:20
 msgid "most voted answers will be shown first"
-msgstr ""
+msgstr "most voted summaries will be shown first"
 
 #: templates/question/answer_vote_buttons.html:10
 msgid "(click again to undo)"
@@ -6587,6 +6626,8 @@ msgid ""
 "The question has been closed for the following reason <b>\"%(close_reason)s"
 "\"</b> <i>by"
 msgstr ""
+"The bill has been closed for the following reason <b>\"%(close_reason)s"
+"\"</b> <i>by"
 
 #: templates/question/closed_question_info.html:8
 #, python-format
@@ -6605,6 +6646,11 @@ msgid ""
 "answer</strong>, for discussions, <strong>please use comments</strong> and "
 "<strong>please do remember to vote</strong> (after you log in)!"
 msgstr ""
+"<span class='strong big'>Please start posting your summary anonymously</span> "
+"- your summary will be saved within the current session and published after "
+"you log in or create a new account. Please try to give a <strong>"
+"summary</strong>, for discussions, <strong>please use comments</strong> and "
+"<strong>please do remember to vote</strong> (after you log in)!"
 
 #: templates/question/new_answer_form.html:32
 msgid ""
@@ -6615,6 +6661,12 @@ msgid ""
 "forget to vote :)</strong> for the answers that you liked (or perhaps did "
 "not like)!"
 msgstr ""
+"<span class='big strong'>You are welcome to summarize your own bill</span>, "
+"but please make sure to give a <strong>summary</strong>. Remember that you "
+"can always <strong>revise your original bill</strong>. Please "
+"<strong>use comments for discussions</strong>  and <strong>please don't "
+"forget to vote :)</strong> for the summaries that you liked (or perhaps did "
+"not like)!"
 
 #: templates/question/new_answer_form.html:34
 msgid ""
@@ -6625,6 +6677,12 @@ msgid ""
 "please <strong>don't forget to vote</strong> - it really helps to select the "
 "best questions and answers!"
 msgstr ""
+"<span class='big strong'>Please try to give a substantial summary</span>. If "
+"you wanted to comment on the question or answer, just <strong>use the "
+"commenting tool</strong>. Please remember that you can always <strong>revise "
+"your summaries</strong> - no need to summaries the same question twice. Also, "
+"please <strong>don't forget to vote</strong> - it really helps to select the "
+"best summaries!"
 
 #: templates/question/question_controls.html:5
 msgid "retag"
@@ -6968,14 +7026,14 @@ msgstr ""
 #: templates/user_profile/user_answers_list.html:5
 #, python-format
 msgid "the answer has been voted for %(answer_score)s times"
-msgstr ""
+msgstr "the summary has been voted %(answer_score)s times"
 
 #: templates/user_profile/user_answers_list.html:15
 #, python-format
 msgid "(%(comment_count)s comment)"
 msgid_plural "the answer has been commented %(comment_count)s times"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "the summary has been commented %(comment_count)s times"
 
 #: templates/user_profile/user_edit.html:4
 msgid "Edit user profile"
@@ -7246,7 +7304,7 @@ msgstr[1] ""
 msgid "Answer"
 msgid_plural "Answers"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "Summaries"
 
 #: templates/user_profile/user_stats.html:22
 #, python-format
@@ -7457,7 +7515,7 @@ msgstr ""
 
 #: templates/widgets/meta_nav.html:13
 msgid "people & groups"
-msgstr ""
+msgstr "citizens & groups"
 
 #: templates/widgets/meta_nav.html:21
 msgid "users"
@@ -7510,7 +7568,7 @@ msgstr ""
 #: templates/widgets/three_column_category_selector.html:4
 msgid ""
 "Categorize your question using this tag selector or entering text in tag box."
-msgstr ""
+msgstr "Categorize your bill using this tag selector or entering text in tag box."
 
 #: templates/widgets/three_column_category_selector.html:7
 #: templates/widgets/three_column_category_selector.html:10
@@ -7577,7 +7635,7 @@ msgstr ""
 
 #: templates/widgets/user_perms.html:21
 msgid "Post questions, answers and comments"
-msgstr ""
+msgstr "Post bills, summaries and comments"
 
 #: templatetags/extra_filters_jinja.py:342
 msgid "no"
@@ -7804,7 +7862,7 @@ msgstr ""
 
 #: views/meta.py:118
 msgid "Q&A forum feedback"
-msgstr ""
+msgstr "VoteAlign feedback"
 
 #: views/meta.py:122
 msgid "Thanks for the feedback!"
@@ -7885,7 +7943,7 @@ msgstr ""
 
 #: views/users.py:867
 msgid "user vote record"
-msgstr ""
+msgstr "citizen vote record"
 
 #: views/users.py:868
 msgid "profile - votes"
@@ -7893,15 +7951,15 @@ msgstr ""
 
 #: views/users.py:889
 msgid "user karma"
-msgstr ""
+msgstr "citizen karma"
 
 #: views/users.py:890
 msgid "Profile - User's Karma"
-msgstr ""
+msgstr "Profile - Citizen's Karma"
 
 #: views/users.py:925
 msgid "users favorite questions"
-msgstr ""
+msgstr "citizens favorite questions"
 
 #: views/users.py:926
 msgid "profile - favorite questions"
@@ -7930,7 +7988,7 @@ msgstr ""
 
 #: views/writers.py:73
 msgid "Sorry, anonymous users cannot upload files"
-msgstr ""
+msgstr "Sorry, anonymous citizens cannot upload files"
 
 #: views/writers.py:91
 #, python-format
@@ -7957,7 +8015,7 @@ msgstr ""
 
 #: views/writers.py:582
 msgid "Please log in to answer questions"
-msgstr ""
+msgstr "Please log in to summarize bills"
 
 #: views/writers.py:708
 msgid "This content is forbidden"
@@ -7976,7 +8034,7 @@ msgstr ""
 
 #: views/writers.py:749
 msgid "Sorry, anonymous users cannot edit comments"
-msgstr ""
+msgstr "Sorry, anonymous citizens cannot edit comments"
 
 #: views/writers.py:798
 #, python-format
