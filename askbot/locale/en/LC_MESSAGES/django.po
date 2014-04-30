@@ -8095,3 +8095,8 @@ msgstr ""
 #~ "the most interesting questions. Also, when you sign up for the first time "
 #~ "- create a unique <a href='%(gravatar_faq_url)s'><strong>gravatar</"
 #~ "strong></a> personal image.</p>"
+
+# unlisted messages ##########################################################
+
+msgid "search or post new decision"
+msgstr "search for bills"
