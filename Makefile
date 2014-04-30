@@ -44,8 +44,13 @@ NOSE := $(BIN)/nosetests$(EXE)
 DEPLOY := deploy
 SETUP := $(BIN)/askbot-setup$(EXE)
 DB := $(DEPLOY)/db.sqlite3
-MANAGE := $(PYTHON) '$(shell cygpath -w $(PWD)/$(DEPLOY)/manage.py)'
-ADMIN := $(PYTHON) '$(shell cygpath -w $(PWD)/$(BIN)/django-admin.py)'
+ifneq ($(findstring cygwin, $(PLATFORM)), )
+	MANAGE := $(PYTHON) '$(shell cygpath -w $(PWD)/$(DEPLOY)/manage.py)'
+	ADMIN := $(PYTHON) '$(shell cygpath -w $(PWD)/$(BIN)/django-admin.py)'
+else
+	MANAGE := $(PYTHON) $(PWD)/$(DEPLOY)/manage.py
+	ADMIN := $(PYTHON) $(PWD)/$(BIN)/django-admin.py
+endif
 
 # Installation ###############################################################
 
