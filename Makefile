@@ -5,7 +5,7 @@ SOURCES := setup.py askbot_requirements_dev.txt
 ENV := $(PWD)/env
 DEPENDS := $(ENV)/.depends
 INSTALLED :=$(ENV)/.installed
-CACHE := .cache
+CACHE := $(PWD)/.cache
 
 PLATFORM := $(shell python -c 'import sys; print(sys.platform)')
 
