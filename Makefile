@@ -30,6 +30,7 @@ endif
 
 ifeq ("darwin", "$(PLATFORM)")
 	BREW_GETTEXT_BIN := $(shell brew --prefix gettext)/bin
+	PATH=$(BREW_GETTEXT_BIN):$(PATH)
 endif
 
 MAN := man
@@ -47,9 +48,9 @@ NOSE := $(BIN)/nosetests$(EXE)
 DEPLOY := deploy
 SETUP := $(BIN)/askbot-setup$(EXE)
 DB := $(DEPLOY)/db.sqlite3
-ifneq ($(findstring cygwin, $(PLATFORM)), )
+ifneq ($(findstring NT, $(OS)), )
 	MANAGE := $(PYTHON) '$(shell cygpath -w $(DEPLOY)/manage.py)'
-	ADMIN := $(PYTHON) '$(shell cygpath -w $$(BIN)/django-admin.py)'
+	ADMIN := $(PYTHON) '$(shell cygpath -w $(BIN)/django-admin.py)'
 else
 	MANAGE := $(PYTHON) $(DEPLOY)/manage.py
 	ADMIN := $(PYTHON) $(BIN)/django-admin.py
@@ -145,13 +146,13 @@ migrate:
 collectstatic:
 	$(MANAGE) collectstatic --noinput
 
+# makemessages compiles .po files from the source code.
+# cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) makemessages -l en
+# compilemessages compiles .mo files from the .po files.
 .PHONY: messages
 messages: askbot/locale/en/LC_MESSAGES/*.mo
 askbot/locale/en/LC_MESSAGES/*.mo: askbot/locale/en/LC_MESSAGES/*.po
-	# makemessages compiles .po files from the source code.
-	# cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) makemessages -l en
-	# compilemessages compiles .mo files from the .po files.
-	cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) compilemessages -l en
+	cd askbot && $(ADMIN) compilemessages --locale=en
 
 # Server #####################################################################
 

@@ -21,7 +21,7 @@ Requirements
     * Mac: https://developer.apple.com/xcode
     * Linux: http://www.gnu.org/software/make (likely already installed)
 * GNU gettext:
-    * Windows: ???
+    * Windows: `apt-cyg install gettext`
     * Mac: `brew install gettext` (keg only, http://brew.sh)
     * Linux: Install gettext from your distro's standard repository 
 
