@@ -26,6 +26,9 @@ else
 	else
 		OPEN := open
 	endif
+endif
+
+ifeq ("darwin", "$(PLATFORM)")
 	BREW_GETTEXT_BIN := $(shell brew --prefix gettext)/bin
 endif
 
@@ -104,15 +107,68 @@ check: pep8 pep257 pylint
 
 .PHONY: test
 test: env depends
-	DJANGO_SETTINGS_MODULE=$(DEPLOY)/settings $(NOSE)
+	$(MANAGE) test askbot
 
 .PHONY: ci
-ci: db
+ci: db test
+
+# Data Fixtures ##############################################################
+
+.PHONY: dumpdata
+dumpdata: env
+	$(MANAGE) dumpdata
+
+.PHONY: loaddata
+loaddata: env
+	$(MANAGE) loaddata $(PACKAGE)/fixtures/users.json
+	$(MANAGE) loaddata $(PACKAGE)/fixtures/bills.json	
+
+# Assets #####################################################################
+
+.PHONY: assets
+assets: db messages
+
+.PHONY: db
+db: env $(DB)
+$(DB): $(PACKAGE)/fixtures/*.json
+	$(MAKE) syncdb migrate collectstatic loaddata
+
+.PHONY: syncdb
+syncdb:
+	$(MANAGE) syncdb --noinput
+
+.PHONY: migrate
+migrate:
+	$(MANAGE) migrate
+
+.PHONY: collectstatic
+collectstatic:
+	$(MANAGE) collectstatic --noinput
+
+.PHONY: messages
+messages: askbot/locale/en/LC_MESSAGES/*.mo
+askbot/locale/en/LC_MESSAGES/*.mo: askbot/locale/en/LC_MESSAGES/*.po
+	# makemessages compiles .po files from the source code.
+	# cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) makemessages -l en
+	# compilemessages compiles .mo files from the .po files.
+	cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) compilemessages -l en
+
+# Server #####################################################################
+
+.PHONY: serve
+serve: env assets
+	$(MANAGE) runserver [::]:8000
+
+.PHONY: launch
+launch:
+	# launch the web interface after a delay for the server to start
+	eval "sleep 10; $(OPEN) http://localhost:8000" &
+	$(MAKE) serve
 
 # Cleanup ####################################################################
 
 .PHONY: clean
-clean: .clean-dist .clean-test .clean-doc .clean-build
+clean: .clean-dist .clean-test .clean-doc .clean-build .clean-messages
 	rm -rf $(DB)
 
 .PHONY: clean-all
@@ -149,41 +205,6 @@ clean-all-cache: clean-all .clean-cache
 .clean-dist:
 	rm -rf dist build
 
-# Server ####################################################################
-
-.PHONY: serve
-serve: env assets
-	$(MANAGE) runserver
-
-.PHONY: launch
-launch:
-	eval "sleep 10; $(OPEN) http://localhost:8000" &
-	$(MAKE) serve
-
-.PHONY: assets
-assets: db messages
-
-.PHONY: db
-db: env $(DB)
-$(DB):
-	$(MAKE) syncdb migrate collectstatic
-
-.PHONY: syncdb
-syncdb:
-	$(MANAGE) syncdb --noinput
-
-.PHONY: migrate
-migrate:
-	$(MANAGE) migrate
-
-.PHONY: collectstatic
-collectstatic:
-	$(MANAGE) collectstatic --noinput
-
-.PHONY: messages
-messages: askbot/locale/en/LC_MESSAGES/*.mo
-askbot/locale/en/LC_MESSAGES/*.mo: askbot/locale/en/LC_MESSAGES/*.po
-	# makemessages compiles .po files from the source code.
-	# cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) makemessages -l en
-	# compilemessages compiles .mo files from the .po files.
-	cd askbot && PATH=$(BREW_GETTEXT_BIN):$(PATH) $(ADMIN) compilemessages -l en
+.PHONY: .clean-messages
+.clean-messages:
+	rm -f askbot/locale/en/LC_MESSAGES/*.mo
