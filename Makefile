@@ -2,7 +2,7 @@ PROJECT := VoteAlign
 PACKAGE := askbot
 SOURCES := setup.py askbot_requirements_dev.txt
 
-ENV := env
+ENV := $(PWD)/env
 DEPENDS := $(ENV)/.depends
 INSTALLED :=$(ENV)/.installed
 CACHE := .cache
@@ -48,11 +48,11 @@ DEPLOY := deploy
 SETUP := $(BIN)/askbot-setup$(EXE)
 DB := $(DEPLOY)/db.sqlite3
 ifneq ($(findstring cygwin, $(PLATFORM)), )
-	MANAGE := $(PYTHON) '$(shell cygpath -w $(PWD)/$(DEPLOY)/manage.py)'
-	ADMIN := $(PYTHON) '$(shell cygpath -w $(PWD)/$(BIN)/django-admin.py)'
+	MANAGE := $(PYTHON) '$(shell cygpath -w $(DEPLOY)/manage.py)'
+	ADMIN := $(PYTHON) '$(shell cygpath -w $$(BIN)/django-admin.py)'
 else
-	MANAGE := $(PYTHON) $(PWD)/$(DEPLOY)/manage.py
-	ADMIN := $(PYTHON) $(PWD)/$(BIN)/django-admin.py
+	MANAGE := $(PYTHON) $(DEPLOY)/manage.py
+	ADMIN := $(PYTHON) $(BIN)/django-admin.py
 endif
 
 # Installation ###############################################################
