@@ -424,7 +424,7 @@ msgstr ""
 #: templates/widgets/edit_post.html:26 templates/widgets/related_tags.html:3
 #: templates/widgets/tag_category_selector.html:2
 msgid "Tags"
-msgstr ""
+msgstr "Issues"
 
 # An edit for my summary
 #: tasks.py:98
