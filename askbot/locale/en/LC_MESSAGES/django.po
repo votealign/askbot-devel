@@ -4467,8 +4467,8 @@ msgstr ""
 #, python-format
 msgid "%(count)d answer:"
 msgid_plural "%(count)d answers:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d summary:"
+msgstr[1] "%(count)d summaries:"
 
 #: models/question.py:1359
 #, python-format
@@ -4826,7 +4826,7 @@ msgstr ""
 
 #: templates/faq_static.html:13
 msgid "What should I avoid in my answers?"
-msgstr ""
+msgstr "What should I avoid in my summaries?"
 
 #: templates/faq_static.html:14
 msgid ""
@@ -8100,3 +8100,9 @@ msgstr ""
 
 msgid "search or post new decision"
 msgstr "search for bills"
+
+msgid "question\nquestions"
+msgstr "bill\nbills"
+
+msgid "answer\nanswers"
+msgstr "summary\nsummaries"
