@@ -115,7 +115,7 @@ dumpdata: env
 
 .PHONY: loaddata
 loaddata: env
-	$(MANAGE) loaddata $(PACKAGE)/fixtures/users.json
+	$(MANAGE) loaddata $(PACKAGE)/fixtures/citizens.json
 	$(MANAGE) loaddata $(PACKAGE)/fixtures/bills.json	
 
 # Assets #####################################################################
