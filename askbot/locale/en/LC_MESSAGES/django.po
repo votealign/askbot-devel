@@ -446,7 +446,7 @@ msgstr "bills"
 
 #: urls.py:57
 msgid "question/"
-msgstr "bill"
+msgstr "bill/"
 
 #: urls.py:62
 msgid "tags/"
