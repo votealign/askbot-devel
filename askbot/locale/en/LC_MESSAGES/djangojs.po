@@ -526,7 +526,7 @@ msgstr "click to edit this comment"
 
 #: media/js/utils.js:1344
 msgid "convert to answer"
-msgstr ""
+msgstr "convert to summary"
 
 #: media/js/utils.js:1397
 msgid "Ok"
