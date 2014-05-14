@@ -1,0 +1,104 @@
+[
+  {
+    "model": "askbot.activityauditstatus",
+    "pk": 1,
+    "fields": {
+      "status": 0,
+      "activity": 3,
+      "user": 2
+    }
+  },
+  {
+    "model": "askbot.activity",
+    "pk": "3",
+    "fields": {
+      "user": 1,
+      "content_type": 16,
+      "is_auditted": 0,
+      "object_id": 2,
+      "summary": "<p>Suspendisse eget porta leo. Pellentesque sollicitudin, velit sit amet adipiscing consectetur, enim dolor consequat nisi, id ultricies urna ligula eget odio. Integer et pellentesque nisi, et cursus dui. Cras nec imperdiet nisi. Fusce a quam et libero ullamcorper pellentesque. Fusce convallis nisl sit amet libero venenatis, vitae semper mi rutrum. Quisque sagittis arcu ac odio sodales faucibus. Nulla posuere, leo et elementum faucibus, felis justo semper dui, nec ornare lorem libero vel nunc. Donec ipsum diam, fermentum at molestie ut, posuere dictum dui.</p>",
+      "active_at": "2014-05-13 17:32:12.387299",
+      "activity_type": 2,
+      "question": 1
+    }
+  },
+  {
+    "model": "askbot.postrevision",
+    "pk": 2,
+    "fields": {
+      "approved_at": null,
+      "is_anonymous": false,
+      "title": "",
+      "tagnames": "",
+      "text": "Suspendisse eget porta leo. Pellentesque sollicitudin, velit sit amet adipiscing consectetur, enim dolor consequat nisi, id ultricies urna ligula eget odio. Integer et pellentesque nisi, et cursus dui. Cras nec imperdiet nisi. Fusce a quam et libero ullamcorper pellentesque. Fusce convallis nisl sit amet libero venenatis, vitae semper mi rutrum. Quisque sagittis arcu ac odio sodales faucibus. Nulla posuere, leo et elementum faucibus, felis justo semper dui, nec ornare lorem libero vel nunc. Donec ipsum diam, fermentum at molestie ut, posuere dictum dui.",
+      "approved_by": null,
+      "revised_at": "2014-05-13 17:32:12.387299",
+      "summary": "initial version",
+      "post": 2,
+      "by_email": false,
+      "author": 1,
+      "email_address": null,
+      "approved": false,
+      "revision": 1
+    }
+  },
+  {
+    "model": "askbot.postToGroup",
+    "pk": 3,
+    "fields": {
+      "post": 2,
+      "group": 4
+    }
+  },
+  {
+    "model": "askbot.postToGroup",
+    "pk": 4,
+    "fields": {
+      "post": 2,
+      "group": 2
+    }
+  },
+  {
+    "model": "askbot.postToGroup",
+    "pk": 4,
+    "fields": {
+      "post": 2,
+      "group": 3
+    }
+  },
+  {
+    "model": "askbot.post",
+    "pk": 2,
+    "fields": {
+      "wiki": false,
+      "vote_up_count": 0,
+      "text": "Suspendisse eget porta leo. Pellentesque sollicitudin, velit sit amet adipiscing consectetur, enim dolor consequat nisi, id ultricies urna ligula eget odio. Integer et pellentesque nisi, et cursus dui. Cras nec imperdiet nisi. Fusce a quam et libero ullamcorper pellentesque. Fusce convallis nisl sit amet libero venenatis, vitae semper mi rutrum. Quisque sagittis arcu ac odio sodales faucibus. Nulla posuere, leo et elementum faucibus, felis justo semper dui, nec ornare lorem libero vel nunc. Donec ipsum diam, fermentum at molestie ut, posuere dictum dui.",
+      "offensive_flag_count": 0,
+      "thread": 1,
+      "post_type": "answer",
+      "language_code": "en",
+      "deleted_at": null,
+      "locked_at": null,
+      "points": 0,
+      "locked_by": null,
+      "parent": null,
+      "comment_count": 0,
+      "html": "<p>Suspendisse eget porta leo. Pellentesque sollicitudin, velit sit amet adipiscing consectetur, enim dolor consequat nisi, id ultricies urna ligula eget odio. Integer et pellentesque nisi, et cursus dui. Cras nec imperdiet nisi. Fusce a quam et libero ullamcorper pellentesque. Fusce convallis nisl sit amet libero venenatis, vitae semper mi rutrum. Quisque sagittis arcu ac odio sodales faucibus. Nulla posuere, leo et elementum faucibus, felis justo semper dui, nec ornare lorem libero vel nunc. Donec ipsum diam, fermentum at molestie ut, posuere dictum dui.</p>",
+      "vote_down_count": 0,
+      "old_answer_id": null,
+      "deleted_by": null,
+      "deleted": false,
+      "last_edited_by": null,
+      "approved": true,
+      "locked": false,
+      "old_question_id": null,
+      "is_anonymous": false,
+      "added_at": "2014-05-13 17:32:12.387299",
+      "summary": "<p>Suspendisse eget porta leo. Pellentesque sollicitudin, velit sit amet adipiscing consectetur, enim dolor consequat nisi, id ultricies urna ligula eget odio. Integer et pellentesque nisi, et cursus dui. Cras nec imperdiet nisi. Fusce a quam et libero ullamcorper pellentesque. Fusce convallis nisl sit amet libero venenatis, vitae semper mi rutrum. Quisque sagittis arcu ac odio sodales faucibus. Nulla posuere, leo et elementum faucibus, felis justo semper dui, nec ornare lorem libero vel nunc. Donec ipsum diam, fermentum at molestie ut, posuere dictum dui.</p>",
+      "wikified_at": null,
+      "author": 1,
+      "old_comment_id": null,
+      "last_edited_at": null
+    }
+  }
+]
