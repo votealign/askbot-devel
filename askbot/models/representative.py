@@ -5,7 +5,6 @@ class Representative(models.Model):
 
     class Meta:
         app_label = 'askbot'
-    pass
 
     def __unicode__(self):
         return self.name
