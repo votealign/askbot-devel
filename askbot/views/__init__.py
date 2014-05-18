@@ -5,6 +5,7 @@ from askbot.views import readers
 from askbot.views import writers
 from askbot.views import commands
 from askbot.views import users
+from askbot.views import representatives
 from askbot.views import meta
 from askbot.views import sharing
 from askbot.views import widgets

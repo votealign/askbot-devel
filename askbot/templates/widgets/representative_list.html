@@ -1,0 +1,8 @@
+{% import "macros.html" as macros %}
+{% if representatives %}
+<ul class="user-list">
+    {% for repr in representatives %}
+    <li>{{ macros.representative_card(repr) }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

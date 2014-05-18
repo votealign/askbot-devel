@@ -8,3 +8,15 @@ class Representative(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        # stub
+        return '/'
+
+    def get_avatar_url(self, arg1):
+        # stub
+        return '/'
+
+    def get_profile_url(self):
+        # stub
+        return '/'

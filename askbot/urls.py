@@ -114,6 +114,22 @@ urlpatterns = patterns('',
         name='user_profile'
     ),
     url(
+        r'^%s$' % _('representatives/'),
+        views.representatives.show_representatives,
+        name='representatives'
+    ),
+    url(
+        r'^%s(?P<id>\d+)/%s$' % (_('representatives/'), _('edit/')),
+        views.representatives.representative_edit,
+        name ='representative_edit'
+    ),
+    url(
+        r'^%s(?P<id>\d+)/(?P<slug>.+)/$' % _('representatives/'),
+        views.representatives.representative,
+        name='representative_profile'
+    ),
+    # End representative views.
+    url(
         r'^%s$' % _('groups/'),
         views.users.groups,
         name='groups'

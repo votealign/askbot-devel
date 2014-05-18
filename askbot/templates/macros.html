@@ -654,6 +654,14 @@ for the purposes of the AJAX comment editor #}
     {% include "widgets/user_list.html" %}
 {%- endmacro -%}
 
+{% macro representative_card(representative) %}
+    {% include "widgets/representative_card.html" %}
+{% endmacro %}
+
+{%- macro representative_list(representatives) -%}
+    {% include "widgets/representative_list.html" %}
+{%- endmacro -%}
+
 {#todo: rename this to avatar #}
 {%- macro gravatar(user, size) -%}
 {% spaceless %}

@@ -1,0 +1,12 @@
+{% import "macros.html" as macros %}
+<div class="user-card">
+    {{ macros.gravatar(representative, 32) }}
+    <div class="user-info">
+        <a href="{{ representative.get_profile_url() }}">{{ representative.name|escape }}</a>
+        {{ macros.user_country_flag(representative) }}
+
+        <br/>
+
+        {{ macros.user_website_link(representative) }}
+    </div>
+</div>
