@@ -128,7 +128,6 @@ urlpatterns = patterns('',
         views.representatives.representative,
         name='representative_profile'
     ),
-    # End representative views.
     url(
         r'^%s$' % _('groups/'),
         views.users.groups,
