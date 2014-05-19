@@ -19,9 +19,10 @@ def show_representatives(request):
 
     representatives = models.Representative.objects.all()
 
-    # TODO: make sorting work
+    # TODO: make sorting and searching work
 
     order_by_parameter = sortby = 'name'
+    search_query = ''
 
     objects_list = Paginator(
         representatives.order_by(order_by_parameter),
@@ -44,21 +45,13 @@ def show_representatives(request):
     }
     paginator_context = functions.setup_paginator(paginator_data)
 
-    # TODO: which of these variables are necessary?
-
     data = {
-        #'active_tab': 'representatives',
-        #'page_class': 'representatives-page',
+        'active_tab': 'representatives',
+        'page_class': 'users-page',
         'representatives': representatives_page,
-        #'group': group,
-        #'search_query': search_query,
-        #'tab_id': sortby,
+        'search_query': search_query,
+        'tab_id': sortby,
         'paginator_context': paginator_context,
-        #'group_email_moderation_enabled': group_email_moderation_enabled,
-        #'user_acceptance_level': user_acceptance_level,
-        #'user_membership_level': user_membership_level,
-        #'user_groups': user_groups,
-        #'group_openness_choices': group_openness_choices,
     }
 
     return render(request, 'representatives.html', data)
