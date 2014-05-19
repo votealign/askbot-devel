@@ -1,8 +1,4 @@
-{% if settings.GROUPS_ENABLED %}{# TODO: what does this do? #}
-    {% extends "two_column_body.html" %}
-{% else %}
-    {% extends "one_column_body.html" %}
-{% endif %}
+{% extends "one_column_body.html" %}
 {% import "macros.html" as macros %}
 <!-- representatives.html -->
 {% block title %}{% spaceless %}{% trans %}Representatives{% endtrans %}{% endspaceless %}{% endblock %}
